@@ -1,0 +1,180 @@
+@import './src/scss/_exports';
+
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2050;
+  overflow: hidden;
+  outline: 0;
+  display: none;
+
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 2040;
+    background: rgba(0, 0, 0, 0.6);
+
+    &.open {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+
+  &.open {
+    display: block;
+  }
+
+  &.modal-center {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 650ms ease;
+  }
+
+  &.modal-top {
+    top: 50px;
+  }
+
+  &.modal-right {
+    right: 0;
+  }
+
+  &.modal-bottom {
+    bottom: 50px;
+  }
+
+  &.modal-left {
+    left: 0;
+  }
+
+  // Optional sizes
+  // -----------------------------------------------------
+  &-sm,
+  &-md,
+  &-lg {
+    width: auto; // Reseting modal optional sizes width for custom styles
+    margin: 0 auto;
+  }
+
+  &-xs .modal-dialog {
+    @media (max-width: $modals-bkpoint) {
+      width: 280px;
+      margin: 0 auto;
+      height: auto;
+    }
+    @media (min-width: $modals-bkpoint) {
+      width: $modal-sm;
+      max-width: $modal-sm;
+    }
+  }
+
+  &-sm .modal-dialog {
+    @media (min-width: $modals-bkpoint) {
+      width: $modal-sm;
+      max-width: $modal-sm;
+    }
+  }
+
+  &-md .modal-dialog {
+    @media (min-width: $modals-bkpoint) {
+      width: $modal-md;
+      max-width: $modal-md;
+    }
+  }
+
+  &-lg .modal-dialog {
+    //modal is larger than modals-breakpoint 
+    @media (min-width: $modal-md) {
+      width: $modal-lg;
+      max-width: $modal-lg;
+    }
+  }
+
+  &-xl {
+    .modal-dialog {
+      height: 100%;
+      margin: 0;
+      @include breakpoint(sm) {
+        height: auto;
+        margin: 30px auto;
+      }
+      @media (min-width: $modal-xl) {
+        width: $modal-xl;
+        max-width: $modal-xl;
+      }
+    }
+    .modal-content {
+      margin: 0;
+      height: 100%;
+    }
+  }
+
+}
+
+// Close button
+// ----------------------------------------------------------------------------
+::ng-deep {
+  .close {
+    color: $panel-icon-color; 
+    font-size: 15px;
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 15px;
+    z-index: 2;
+  
+    @media (min-width: $modals-bkpoint) {
+      padding: 20px;
+    }
+  
+  }
+}
+
+// .modal {
+//   position: absolute;
+//   width: 95%;
+//   display: block;
+//   overflow: auto;
+//   z-index: 1000;
+//   background-color: white;
+//   transition: all 150ms ease;
+  
+//   &.modal-center {
+//     position: absolute;
+//     top: 50%;
+//     left: 50%;
+//     transform: translate(-50%, -50%);
+//     opacity: 0;
+//     visibility: hidden;
+//   }
+
+//   &.modal-fluid {
+//     width: auto;
+//     height: auto;
+//   }
+// }
+
+// .mc-wrapper {
+//   position: absolute;
+//   top: 15px;
+//   right: 15px;
+//   color: #e3e3e3;
+//   transition: color 150ms ease-in-out;
+//   cursor: pointer;
+// }
+
+// .mc-close-icon {
+//   &:hover {
+//     color: #D32323;
+//   }
+// }

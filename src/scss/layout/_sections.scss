@@ -1,0 +1,140 @@
+//
+// Sections
+// ----------------------------------------------------------------------------
+.section {
+  padding-left: $padding-box;
+  padding-right: $padding-box;
+  margin-bottom: 90px;
+
+  @include breakpoint(0, $screen-sm-max) {
+    margin-bottom: 60px;
+    padding-bottom: 45px;
+    padding-top: 45px;
+  }
+
+  // &:first-child {
+  //   margin-bottom: $padding-vertical;
+  // }
+
+  .container-fluid {
+    @include breakpoint(xs) {
+      padding: 0;
+    }
+
+    &--over {
+      // max-width: $container-over;
+    } 
+  }
+
+  // Elements
+  // --------------------------------------------------------------------------  
+  &__header {
+    margin: 0 auto $padding-box-double;
+    text-align: center;
+    max-width: 910px;
+    .title_headline {
+      @include breakpoint(md) {
+        margin-bottom: 30px;
+      }
+    }
+  }
+
+  &__footer {
+    margin: $grid-gutter-width 0 0;
+    text-align: center;    
+  }
+
+  // Header and footer contents
+  // -------------------------------------------------------------------------- 
+  &__title {
+    @include title(section);
+    margin-bottom: 10px;
+
+    .normal {
+      font-weight: normal;
+    }
+
+    .brand {
+      color: $primary;
+    }
+  }
+
+  &__subtitle {
+    @include text(standard);
+  }
+
+  &__inlet {
+    @include text(big);
+  }
+
+  &__text {
+    @include text(standard);
+
+    &--big {
+      @include text(big);
+    }
+  }
+
+  &__image {
+    .icon {
+      width: 90px;
+      height: 90px;
+      &--rotated {
+        transform: rotate(10deg);
+      }
+      &--little {
+        width: 40px;
+        &.icon--rotated {
+          transform: rotate(-23deg);
+          + .icon--rotated {
+            width:50px;
+            transform: rotate(10deg);
+          }
+        }
+      }
+      &--red {
+        fill: setColor(red,dark);
+      }
+    }
+  }
+
+
+  // Section variations
+  // --------------------------------------------------------------------------
+  
+  //TODO: remove this colors and use sections-colored.scss
+  &--blue {
+    background-color: setColor(blue,base);
+    @include breakpoint(xs) {
+      padding: 60px 10px;
+    }
+  }
+  &--gray {
+    background-color: setColor(gray,lighter);
+
+    &.switch {
+
+      @include breakpoint(0, $screen-sm-max) {
+        background-color: transparent;
+        margin-bottom: 30px;
+      }
+
+    }
+  }
+  //end TODO
+  &--tight {
+    margin-bottom: 0;
+    overflow: hidden;
+  }
+  &--full {
+    padding: 0;
+    &.nomargin {
+      margin-bottom: 0;
+    }
+  }
+  &--fullwidth {
+    margin-left: -$padding-box;
+    margin-right: -$padding-box;
+  }
+
+}

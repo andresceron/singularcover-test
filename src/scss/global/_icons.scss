@@ -1,0 +1,55 @@
+//
+// Icons
+// --------------------------------------------------------
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+  vertical-align: middle;
+
+  //TYPES
+  &--action {
+    margin: 5px;
+    position: absolute;
+    bottom: 0;
+    right: 15px;
+    width: 20px;
+    height: 20px;
+    color: #FFF;
+    stroke-width: 2;
+  }
+
+  &-shield{
+
+    &--tangerine{
+      .icon-shield-mim{fill:setColor(red,dark);}
+      .icon-shield-path{fill:setColor(red,base);}
+    }
+    &--algae{
+      .icon-shield-mim{fill:setColor(secondary,base);}
+      .icon-shield-path{fill:setColor(blue,base);}
+    }
+    &--salad{
+      .icon-shield-mim{fill:setColor(green,base);}
+      .icon-shield-path{fill:setColor(green,dark);}
+    }
+    &--midnight{
+      .icon-shield-mim{fill:setColor(yellow,base);}
+      .icon-shield-path{fill:setColor(secondary,base);}
+    }
+    &--flamingob{
+      .icon-shield-mim{fill:setColor(blue,base);}
+      .icon-shield-path{fill:setColor(red,dark);}
+    }
+    &--flamingoy{
+      .icon-shield-mim{fill:setColor(yellow,dark);}
+      .icon-shield-path{fill:setColor(red,dark);}
+    }
+
+  }
+
+}
+.icon-linkedin {
+	vertical-align: sub;
+}

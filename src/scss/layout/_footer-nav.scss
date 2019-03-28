@@ -1,0 +1,141 @@
+//
+// Footer Navigation
+// ----------------------------------------------------------------------------
+.footer-nav {
+  
+  // Section Content
+  // --------------------------------------------------------------------------
+  &__menu {
+
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: setColor(gray,lightest);
+
+    > li {
+      @include text(footer_link, setColor(gray,lightest));
+      margin-bottom: 10px;
+
+      > a,
+      .link {
+        @include text(footer_link, setColor(gray,lightest));
+        opacity: 1;
+        transition: opacity $animation-fade;
+        &:hover {
+          opacity: 0.6;
+        }
+      }
+    }
+    &--2col {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: setColor(gray,lightest);
+
+      > li {
+        @include text(footer_link, setColor(gray,lightest));
+        display: block;
+        margin-bottom: 10px;
+        width: 49%;
+        float: left;
+        > a,
+        .link {
+          @include text(footer_link, setColor(gray,lightest));
+          opacity: 1;
+          transition: opacity $animation-fade;
+          &:hover {
+            opacity: .6;
+          }
+        }
+      }
+    }
+
+    @include breakpoint(0, $screen-sm-max) {
+      &-sm {
+        > li {
+          display: inline-block;
+          width: 49%;
+          &.vt{
+            vertical-align: top;
+          }
+        }
+      }
+    }
+
+    &--inline {
+      > li {
+        display: inline-block;
+        margin-right: 10px;
+        margin-bottom: 0;
+        padding-right: 10px;
+        border-right: 1px solid setColor(gray,lighter);
+        &:last-child {
+          border-right: none;
+        }
+      }
+    }
+    &--bullet {
+      > li {
+        position: relative;
+        margin-bottom: 0;
+        border-bottom: 1px solid transparent;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        padding-left: 30px;
+        &:first-child {
+          padding-top: 0;
+          .icon {
+            top: 2px;
+          }
+        }
+        .icon {
+          width: 15px;
+          height: 15px;
+          color: setColor(blue,base);
+          position: absolute;
+          top: 6px;
+          left: 0;
+        }
+      }
+    }
+
+    .icon {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      margin-right: $margin-icon-text;
+    }
+
+  }
+  
+  // Special list items
+  // ------------------------------------------------------------------------
+  .footer-nav__card {
+    .icon {
+      margin: 0;
+      fill: setColor(gray,darker);
+    }
+  }
+  
+  &__app {
+    text-align: center;
+    display: inline-block;
+    margin-top: 5px;
+    width: 49%;
+
+    @include breakpoint(md) {
+      width: auto;
+      margin-right: 10px;
+    }
+    @include breakpoint(sm) {
+      text-align: left;
+    }
+
+    img {
+      max-width: 145px;
+      height: auto;
+      margin: 0 auto;
+    }
+  }
+
+}

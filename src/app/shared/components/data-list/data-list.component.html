@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row no-gutters">
+    <div class="col">
+      <virtual-scroller [items]="items" [bufferAmount]="5" (vsUpdate)="viewPortItems = $event" [ngStyle]="{height: virtualScrollHeight + 'px', 'overflow-y': items?.length < 5 ? 'visible' : 'auto'}">
+        <div *ngFor="let item of items; let i = index; trackBy: i" class="mcard row no-gutters">
+          <div class="mcard__col--image col-2">
+            <img [src]="'assets/images/'+item['brand-image']" alt="{{item.name}}">
+          </div>
+          <div class="mcard__col--info col-2">
+            <p>
+              <ng-template [ngTemplateOutlet]="titleRef" [ngTemplateOutletContext]="{$implicit: item}"></ng-template>
+            </p>
+            <p>
+              <ng-template [ngTemplateOutlet]="tagRef" [ngTemplateOutletContext]="{$implicit: item}"></ng-template>
+            </p>
+          </div>
+          <div class="mcard__col--info col-2">
+            <p>
+              <ng-template [ngTemplateOutlet]="subTagRef" [ngTemplateOutletContext]="{$implicit: item}"></ng-template>
+            </p>
+          </div>
+          <div class="mcard__col--price col-2" *ngIf="hasPrice">
+            <p>
+              <ng-template [ngTemplateOutlet]="priceRef" [ngTemplateOutletContext]="{$implicit: item}"></ng-template>
+            </p>
+          </div>
+          <div class="mcard__col--actions col-2">
+            <button class="btn btn-primary" (click)="clickedFavItem(listToModify, item, i)">
+              <ng-template [ngTemplateOutlet]="favBtnRef" [ngTemplateOutletContext]="{$implicit: item}"></ng-template>
+            </button>
+          </div>
+          <div class="col-2"></div>
+        </div>
+      </virtual-scroller>
+    </div>
+  </div>
+</div>

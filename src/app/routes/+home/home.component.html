@@ -1,0 +1,68 @@
+<!-- <sc-banner bannerType="homebanner"></sc-banner> -->
+<div class="section">
+  <sc-searchbar class="searchbar__wrapper" (searchValue)="searchItems($event)"></sc-searchbar>
+
+  <div class="row search-results" *ngIf="list.length !== 0"> 
+    <div class="col">
+      <p>Your Search Result</p>
+      <a href="javascript:void(0)" modalOpen modalId="authModal" modalTemplate="authTabLogin">
+        View Favorites
+      </a>
+    </div>
+    <div class="col-md-12">
+      <sc-sortby [items]="sortByItemsDef" (tabEvent)="sortingEvent($event)">
+        <ng-template #titleRef let-item id="sortbyEl">{{item.title}}</ng-template>
+      </sc-sortby>
+      <sc-data-list [listToModify]="savedList" [items]="list" [hasPrice]="true" (itemEvent)="modifyFav($event)" [virtualScrollHeight]="560">
+          <ng-template #titleRef let-item>{{item.name}}</ng-template>
+          <ng-template #tagRef let-item>{{item.brand}}</ng-template>
+          <ng-template #subTagRef let-item>{{item.kind}}</ng-template>
+          <ng-template #priceRef let-item>{{item.price}}</ng-template>
+          <ng-template #favBtnRef let-item>[un]save</ng-template>
+      </sc-data-list>
+    </div>
+  </div>
+  <div class="col-md-12" *ngIf="list.length === 0">
+    <div class="text-center">
+      <h3>There was no result found...</h3>
+      <span>Please try again by typing in the searchbar above you</span>
+    </div>
+  </div>
+</div>
+
+<sc-modal #modal modalId="authModal" position="center" size="xl">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <sc-searchbar class="searchbar__wrapper" (searchValue)="searchSavedItems($event)"></sc-searchbar>
+        <span class="stars" ng-class="classes">
+          <sc-svg name="icon-star-full"></sc-svg>
+          <sc-svg name="icon-star-empty"></sc-svg>
+        </span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12" *ngIf="savedList.length !== 0">
+        <sc-sortby [items]="sortByItemsSaved" (tabEvent)="sortingEvent($event)">
+          <ng-template #titleRef let-item>{{item.title}}</ng-template>
+        </sc-sortby>
+        <sc-data-list [listToModify]="savedList" [items]="savedList" [hasPrice]="false" (itemEvent)="modifyFav($event)" [virtualScrollHeight]="560">
+         <ng-template #titleRef let-item>{{item.name}}</ng-template>
+          <ng-template #tagRef let-item>{{item.brand}}</ng-template>
+          <ng-template #subTagRef let-item>{{item.kind}}</ng-template>
+          <ng-template #priceRef let-item>{{item.price}}</ng-template>
+          <ng-template #favBtnRef let-item>[un]save</ng-template>
+        </sc-data-list>
+      </div>
+      <div class="col-12" *ngIf="savedList.length === 0">
+        <div class="text-center">
+          <h3>No favorites saved yet</h3>
+          <span>Remeber that you can save policies and look at them here ;)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- <sc-authentication [panelOption]="modal.currentTemplate"></sc-authentication> -->
+  <!-- <ng-template #authLogin let-item></ng-template> -->
+</sc-modal>

@@ -1,0 +1,375 @@
+//
+// Forms
+// ----------------------------------------------------------------------------
+// .form {
+
+//   &-actions {
+//     text-align: right;
+
+//     .btn {
+//       display: block;
+//       width: 100%;
+
+//       @include breakpoint($modals-bkpoint) {
+//         display: inline-block;
+//         width: auto;
+
+//         &.btn--full {
+//           display: block;
+//           width: 100%;
+//         }
+//       }
+//     }
+  
+//     .btn + .btn {
+//       margin-top: 10px;
+
+//       @include breakpoint($modals-bkpoint) {
+//         margin-left: 10px;
+//         margin-top: 0;
+//       }
+//     }
+
+//   }
+
+//   &-group {
+//     position: relative;
+
+//     //Form group with icons, not being used currently
+//     &.has-icon {
+//       position: relative;
+    
+//       > .icon {
+//         position: absolute;
+//         top: 53px;
+//         right: 16px;
+//         margin-top: -10px;
+//         color: $panel-icon-color;
+//         font-size: 20px;
+//       }
+
+//       .form-label.sr-only ~ .icon { 
+//         top: 24px;
+//       }
+
+//       > input {
+//         padding-right: 50px;
+//       }
+//     }
+
+//     &--tight {
+//       margin-bottom: $form-group-margin-bottom / 2;
+//     }
+
+//     // Remove margin-bottom in .form-group "inception" (.form-group inside .form-group)
+//     > .row:last-child .form-group {
+//       margin-bottom: 0;
+//     }
+
+//   }
+
+
+//   &-control {
+//     position: relative;
+//     @include text(standard);
+
+//     // Disable auto-zoom on iOS input field focus
+//     @media screen and (max-width: $screen-md-max) and (-webkit-min-device-pixel-ratio: 0) {
+//       font-size: 16px;
+//       line-height: 18px;
+//       @include placeholder { line-height: 22px; }
+//     }
+
+//     &[disabled],
+//     &[readonly],
+//     fieldset[disabled] & {
+//       background-color: setColor(gray,light);
+//     }
+
+//     &:focus {
+//       box-shadow: none;
+//     }
+
+//     //For custom phone switcher
+//     &--ghost {
+//       border: none;
+//       box-shadow: none;
+//       height: auto;
+//       padding: 0;
+//     }
+
+//     .text {
+//       position: absolute;
+//       top: 50%;
+//       transform: translateY(-50%);
+//       left: 0;
+//       color: setColor(gray,darker);
+//       display: block;
+//       padding-left: 16px;
+//       padding-right: 16px;
+//       width: 100%;
+
+//       &.placeholder{
+//         color: setColor(gray,dark);
+//       }
+
+//     }
+
+//   }
+
+//   &-fieldset {
+//     margin-bottom: 0;
+
+//     & + & {
+//       margin-bottom: 15px;
+//     }
+//   }
+
+//   //Subscription form
+//   &-inline {
+
+//     .form-label,
+//     .form-control,
+//     .form-control--select {
+//       display: inline-block;
+//     }
+
+//     .form-label {
+//       margin-right: 10px;
+//     }
+
+//     .form-control,
+//     .form-control--select {
+//       min-width: 100px;
+//     }
+
+//   }
+
+//   &-block {
+  
+//     display: block;
+//     margin-bottom: 20px;
+
+//     &--inputbutton {
+//       margin-bottom: 15px;
+//       .btn {
+//         margin-top: 10px;
+//         width: 100%;
+//       }
+//     }
+  
+//     > .row:last-child .form-group {
+//       margin-bottom: 0;
+//     }
+
+//     &__title {
+//       float: left; // Position legend inside the fieldset
+//       display: block;
+//       margin: 0 0 20px;
+//       border: none;
+//       color: $gray-base;
+//       font-family: $alt-font;
+//       font-weight: bold;
+//       font-size: 20px;
+//       line-height: 1;      
+//     }
+
+//     &__subtitle {
+
+//       margin: 10px 0 20px;
+//       color: $gray-base;
+//       font-family: $alt-font;
+//       font-weight: 500;
+//       font-size: 14px;
+//       line-height: 1.428571429;
+    
+//       span {
+
+//         display: block;
+//         color: setColor(blue,base);
+//         font-family: $main-font;
+//         font-weight: bold;
+//         font-size: 12px;
+      
+//         @include breakpoint(sm) {
+//           display: inline-block;
+//           margin-left: 4px;
+//         }
+
+//       }
+
+//     }
+
+//     &__advice {
+//       margin-bottom: 35px;
+//     }
+
+//     &__info {
+//       @include text(small);
+//       position: relative;
+//       padding-left: 24px;
+//       margin: 0 0 30px;
+//       clear: both;
+
+//       &--nomargin {
+//         margin-bottom: 0;
+//       }
+
+//       .icon {
+//         position: absolute;
+//         left: 0;
+//         top: 0;
+//         font-size: 16px;
+//         margin-right: $margin-icon-text;
+//       }
+
+//     }
+
+//     &--high {
+//       padding: $padding-box;
+//       background-color: setColor(gray,lightest);
+//       border: 1px solid setColor(gray,light);
+//     }
+
+//   }
+
+// }
+
+// Counters
+// ----------------------------------------------------------------------------
+.form-control__counter {
+  color: setColor(gray,dark);
+  display: block;
+  font-size: 10px;
+  line-height: 1.6;
+  padding: 2px;
+  text-align: right;
+}
+
+// Labels
+// ----------------------------------------------------------------------------
+label,
+.form-label {
+  @include text(small);
+	display: block;
+	max-width: 100%;
+	margin-bottom: 10px;
+}
+
+.form-label--muted { //
+  color: setColor(gray,dark);
+  font-size: 11px;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+
+// Legal notes
+// ----------------------------------------------------------------------------
+.form-legal {
+	font-size: 11px;
+  line-height: 1.5;
+}
+
+.form-inlinehelp {
+  display: inline-block;
+  margin: 16px 0; 
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.help-block {
+  position: absolute;
+  bottom: -30px; 
+  @include text(small);
+
+  .error {
+    color: $danger;
+  }
+}
+
+// Custom select controls
+// ----------------------------------------------------------------------------
+.form-control--select {
+  position: relative;
+
+  select {
+    appearance: none;
+    &:-moz-focusring {
+        color: transparent;
+        text-shadow: 0 0 0 #000;
+    }    
+    padding-right: 33px; //for the arrow
+  }
+
+  &.results__mobile-actions--sort::after {
+    border-color: white;
+    color: white;
+    right: 14px;
+  }
+
+  &::after {
+    content: "";
+    display: block;
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    top: 25px;
+    right: 20px;
+    margin-top: -6px;
+    border-top: 1px solid setColor(gray,darker);
+    border-right: 1px solid setColor(gray,darker);
+    transform: rotate(135deg);
+    pointer-events: none;
+
+  }
+
+}
+
+// PSEUDO STYLES
+//
+// INPUT TYPE NUMBER
+
+input[type="number"]{
+
+  -moz-appearance:textfield;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button{
+    -webkit-appearance:none;
+    margin:0;
+  }
+
+}
+
+
+// Legal boxes for GDPR
+// ----------------------------------------------------------------------------
+.legal-box {
+  @include box($border-color: setColor(gray,light), $background-color: setColor(white));
+  height: 120px;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  &--tall {
+    height: 170px;
+  }
+
+  &__title {
+    @include text(standard, setColor(gray, dark));
+  }
+
+  p {
+    @include text(small, setColor(gray, dark));
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+.legal-information {
+  
+  p {
+    @include text(small, setColor(gray, dark));
+  }
+}
+

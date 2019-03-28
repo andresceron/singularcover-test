@@ -1,0 +1,95 @@
+//
+// Header
+// ----------------------------------------------------------------------------
+.header {
+
+  height: $header-height-mobile;
+  background-color: transparent;
+  transition: all $animation-move;
+
+  .has-fixedheader & {
+    background-color: $header-bg;
+  }
+
+  @include breakpoint($grid-float-breakpoint) {
+    height: 70px;
+    padding: 10px 0;
+  }
+
+  &--landing {
+    background-color: white;
+
+    .logo {
+      fill: setColor(primary, base);
+    }
+  }
+  &--captation {
+    background-color: setColor(secondary, base);
+    border-bottom: 1px solid rgba(#ffffff, 0.2);
+
+    .logo {
+      fill: white;
+    }
+    .dropdown-toggle {
+      color: white;
+    }
+  }
+  &__wrapper {
+    
+    @include clearfix;
+
+    @include breakpoint($grid-float-breakpoint) {
+      position: relative;      
+      // max-width: $container-over;
+      //padding: 0 $grid-gutter-width/2;
+      margin: 0 auto;
+    }
+
+  }
+
+  &__left {
+    @include make-md-column(2);
+    float: left;
+    width: 120px;
+    padding: 0;
+  } 
+
+  &__right {
+    @include make-md-column(10);    
+    float: right;
+    width: 200px;
+    text-align: right;
+  }
+
+  &__brand {
+
+    display: inline-block;
+    width: 120px;
+    height: 60px;
+    text-align: center;
+    vertical-align: top;
+
+    svg {
+      margin: 16px auto 14px;
+      width: 100px;
+      height: 30px;
+      transition: fill $animation-fade;
+    }
+
+    @include breakpoint($grid-float-breakpoint) {
+      
+      width: 145px;
+      height: 50px;
+      padding: 0 10px;
+
+      svg {
+        margin: 10px auto 4px;
+        width: 125px;
+        height: 36px;
+      }      
+
+    }
+
+  }
+
+}

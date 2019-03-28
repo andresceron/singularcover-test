@@ -1,0 +1,61 @@
+@import './src/scss/exports';
+
+.header {
+  height: $header-height-mobile;
+  background-color: setColor(gray, darkest);
+  // position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+
+  @include breakpoint(lg) {
+    // height: 110px;
+    padding: 0 0 10px 0;
+  }
+
+  &__nofixed {
+    position: relative;
+  }
+
+  &__lang {
+    display: none;
+    // height: $header-height-lang;
+    background-color: setColor(gray,darker);
+    
+    @include breakpoint(lg) {
+      display: block;
+    }
+
+    .container {
+      width: $container-over;
+    }
+  }
+
+    &__wrapper {
+    
+    @include clearfix;
+
+    @include breakpoint(lg) {
+      position: relative;      
+      max-width: $container-over;
+      margin: 0 auto;
+    }
+
+  }
+}
+
+::ng-deep {
+  .nav--on {
+    .main-nav {
+      pointer-events: auto;
+        .main-nav__panel {
+          transform: translate3d(0,0,0);
+        }
+      
+        .main-nav__overlay {
+          background-color: rgba($gray-base,.5);      
+        }
+    }
+  }
+}

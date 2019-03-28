@@ -1,0 +1,450 @@
+//
+// Results
+// ----------------------------------------------------------------------------
+.results {
+
+  // Layout
+  // ----------------------------------------------------------------------------
+  position: relative;
+  margin: 0 $grid-gutter-width/-2 40px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  &__nofilters {
+    @include breakpoint(md) {
+      margin-top: -20px;
+    }
+  }
+
+  //Rules when first results list, wanup results, are empty and only appear linkout results.
+  &.results--concat {
+    margin-top:60px;
+  }
+
+  &__item {
+
+    display: flex;
+    flex-basis: auto;
+    padding: 0 $grid-gutter-width/2;
+    margin-top: 20px;
+    width: 100%;
+
+    @include breakpoint($screen-pblet-min) {
+      width: 50%;
+    }
+
+    @include breakpoint(sm) {
+      width: 33.333333333%;
+    }
+
+    @include breakpoint(md) {
+      width: 50%;
+    }
+
+    @include breakpoint(lg) {
+      width: 33.333333333%;
+    }
+
+    &.results__banner,
+    .results__banner__component {
+      width: 100%;
+    }
+
+  }
+
+  // Layout mobile
+  // ----------------------------------------------------------------------------
+  &__sidebar,
+  &__map__button {
+    display: none;
+
+    @include breakpoint(md) {
+      display: block;
+    }
+  }
+
+  &__mobile-actions {
+    display: block;
+    @include clearfix();
+
+    @include breakpoint(md) {
+      display: none;
+    }
+
+  }
+
+  // Map results
+  // ----------------------------------------------------------------------------
+  &__map {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    position: relative;
+    margin: 0 auto;
+
+    @include breakpoint(sm) {
+      max-width: calc(180vh - 60px); //inside padding
+    }
+
+    .close {
+      @include breakpoint(0, $screen-xs-max) {
+        background-color: rgba(0, 0, 0, 0.4);
+        border-radius: 50%;
+        padding: 6px;
+        margin: 10px;
+      }
+    }
+
+    &__button {
+      cursor: pointer;
+
+      //desktop version
+      @include breakpoint(md) {
+        a {
+          display: block;
+          position: relative;
+
+          &:hover {
+            span {
+              background-color: setColor(blue,base);
+            }
+          }
+        }
+        span {
+          background-color: rgba(setColor(gray,dark), 0.8);
+          border-radius: 50%;
+          color: #FFFFFF;
+          font-size: 16px;
+          display: block;
+          padding: 15px;
+          position: absolute;
+          top: 5px;
+          right: 5px;
+        }
+        .icon {
+          display: block;
+          width: 21px;
+          height: 20px;
+        }
+      }
+
+      .btn {
+        margin: 15px 0;
+      }
+    }
+
+    &__wrapper {
+      height: 100%;
+
+      @include breakpoint(sm) {
+        padding: 50px 30px;
+      }
+    }
+
+    &__map {
+      overflow:hidden;
+      ng-map {
+        height: 100vh;
+
+        @include breakpoint(sm) {
+          height: calc(100vh - 100px); //inside padding
+        }
+      }
+      &--pano {
+        overflow: hidden;
+        ng-map {
+          height: 100vh;
+          @include breakpoint(sm) {
+            height: calc(60vh - 100px);
+          }
+        }
+      }
+    }
+  }
+
+  // Order bar
+  // ----------------------------------------------------------------------------
+  &__order-bar {
+    display: none;
+
+    @include breakpoint(md){
+      display: flex;
+    }
+  }
+
+  // Layout results landings
+  // ----------------------------------------------------------------------------
+
+  &--landing {
+    margin: 0 auto;
+    // max-width: 1180px;
+
+    &__viewmore {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .results__item {
+
+      @include breakpoint($screen-pblet-min) {
+        width: 50%;
+      }
+
+      @include breakpoint(md) {
+        width: 33.333333333%;
+
+        &:last-child {
+          display: none;
+        }
+      }
+
+      @include breakpoint(lg) {
+        width: 25%;
+
+        &:last-child {
+          display: flex;
+        }
+      }
+
+    }
+  }
+
+  // Notifications messages
+  // ----------------------------------------------------------------------------
+
+  &-notifications {
+    &--blank {
+      position: relative;
+      margin-top: 30px;
+    }
+  }
+
+  // Summary
+  // ----------------------------------------------------------------------------
+  &-summary {
+    padding-top: $padding-box-double;
+    padding-bottom: $padding-box;
+
+    //when hotel-rooms__room-choice is not visible, add extra padding
+    @include breakpoint(md) {
+      padding-bottom: $padding-box-double; 
+    }
+
+    &__content {
+      @include title(subtle);
+      margin: 0;
+      .results-summary__destination {
+        font-weight: $medium-weight;
+      }
+    }
+
+    &__total {
+      color: $brand-primary;
+    }
+
+    &__title,
+    &__subtitle {
+      margin-bottom: 0;
+      margin-top: 0;
+      margin-right: 0;
+      margin-left: 10px;
+      width: 100%;
+      display: block;
+    }
+    &__title {
+      @include title(subtle);
+    }
+    &__subtitle {
+      @include text(standard);
+    }
+
+  }
+
+  // No results found
+  // ----------------------------------------------------------------------------
+  &-noresults {
+
+    margin-top: 20px;
+    text-align: center;
+
+    &__img {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    &__title,
+    &__subtitle {
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    &__title {
+      @include title(subtle);
+      margin-bottom: 20px;
+    }
+    &__subtitle {
+      @include title(subtle);
+    }
+
+  }
+  &--noresults {
+    padding-bottom: 30px;
+
+    .results-summary__content {
+      padding-bottom: 25px;
+
+      &:last-child {
+        border-bottom: 1px solid setColor(gray,light);
+      }
+    }
+    .alert-info {
+      margin-bottom: 40px;
+
+      .list--checks {
+        margin-left: 25px;
+        margin-top: 15px;
+      }
+    }
+  }
+
+  // Disambiguation results list
+  // ----------------------------------------------------------------------------
+  &-disamb {
+    margin-bottom: 40px;
+
+    &__list {
+      @extend %list-clean;
+
+      li + li {
+        margin-top: 15px;
+      }
+    }
+    &__item {
+      background-color: #FFF;
+      box-shadow: 0 1px 3px 0 rgba(#000, 0.15);
+      display: flex;
+      align-items: center;
+      padding: $padding-box;
+
+      &:hover {
+        .btn {
+          background-color: $btn-alt-hover;
+        }
+      }
+    }
+    &__photo {
+      @include make-xs-column(3);
+      @include make-sm-column(2);
+      @include make-lg-column(1);
+      padding-left: 0;
+
+      img {
+        display: block;
+      }
+    }
+    &__text {
+      @include make-xs-column(12);
+      @include make-sm-column(9);
+      @include make-lg-column(10);
+      padding: 0;
+    }
+    &__action {
+      @include make-xs-column(12);
+      @include make-sm-column(4);
+      @include make-md-column(4);
+      padding: 0;
+      text-align: right;
+
+      @include breakpoint(xs) {
+        display: none;
+      }
+
+      .btn {
+        text-transform: none;
+      }
+    }
+
+    &__title {
+      @include title(module);
+      border-bottom: 1px solid setColor(gray,lighter);
+      display: block;
+      padding-bottom: 15px;
+      margin-bottom: 20px;
+
+      .icon {
+        fill: setColor(gray,darker);
+        font-size: 20px;
+        margin-right: $margin-icon-text;
+      }
+      .icon,
+      span {
+        display: inline-block;
+        vertical-align: middle;
+      }
+    }
+    &__keyword {
+      @include text(standard, setColor(gray,dark)er);
+      font-weight: $medium-weight;
+      margin-bottom: 0;
+    }
+    &__info {
+      color: setColor(gray,dark);
+      display: block;
+      font-size: 12px;
+      margin-bottom: 0;
+    }
+    &__loadmore {
+      font-size: 13px;
+    }
+    &__wrapper {
+      display: block;
+    }
+  }
+
+}
+
+// Placeholders loading
+// ----------------------------------------------------------------------------
+
+.l-content--results {
+
+  .loader-ph--v {
+
+    @include breakpoint(xs) {
+      display: none;
+
+      &:first-child {
+        display: block;
+      }
+    }
+
+    @include breakpoint($screen-pblet-min) {
+      width: 50%;
+
+      &:last-child {
+        display: block;
+      }
+    }
+
+    @include breakpoint(sm) {
+      width: 33.333333333%;
+    }
+
+    @include breakpoint(md) {
+      width: 50%;
+
+      &:last-child {
+        display: none;
+      }
+    }
+
+    @include breakpoint(lg) {
+      width: 33.333333333%;
+
+      &:last-child {
+        display: block;
+      }
+    }
+  }
+}

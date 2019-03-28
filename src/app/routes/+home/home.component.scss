@@ -1,0 +1,9 @@
+@import './src/scss/_exports';
+
+:host {
+  .mcard {
+    .top-hotels & {
+      padding-bottom: 70px;
+    }
+  }
+}

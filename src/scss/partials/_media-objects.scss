@@ -1,0 +1,53 @@
+//
+// Media objects consist on an image and a text, with an optional title
+// Default media objects are stacked vertically
+// For horizontal media objects, bootstrap has the "media" component
+// ----------------------------------------------------------------------------
+
+.media-item {
+
+  &__img {
+    margin-bottom: 20px;
+
+    img {
+      max-width: 100%;
+      width: 100%;
+      border-radius: 3px;
+    }
+    &--icon {
+      color: setColor(gray, darker);
+      fill: setColor(gray, darker);
+      font-size: 42px;
+      text-align: center;
+    }
+  }
+  &__content {
+    margin: 0 auto;
+  }
+  &__title {
+    @include title(subtle);
+    margin-bottom: 10px;
+  }
+  &__text {
+    @include text(standard, setColor(gray, dark));
+  }
+
+}
+
+.media-list {
+
+  @include clearfix;
+
+  .media-item {
+    margin-bottom: 40px;
+    text-align: left;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+    @include breakpoint(sm){
+      margin-bottom: 0;
+    }
+  }
+
+}

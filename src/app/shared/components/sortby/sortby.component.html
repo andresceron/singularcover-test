@@ -1,0 +1,14 @@
+<div class="container">
+
+    <div class="row no-gutters">
+      <div class="col-2">Sort By:</div>
+      <div class="col-2" 
+           *ngFor="let item of items"
+           [ngClass]="{active: item.isActive}">
+        <a href="javascript:void(0)" (click)="tabClicked(item)">
+          <ng-template [ngTemplateOutlet]="titleRef" [ngTemplateOutletContext]="{$implicit: item}"></ng-template>
+        </a>
+      </div>
+    </div>
+
+</div>

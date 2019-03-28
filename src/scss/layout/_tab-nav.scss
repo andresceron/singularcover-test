@@ -1,0 +1,184 @@
+//
+// Tab Nav
+// ----------------------------------------------------------------------------
+.tab-nav {
+  background-color: setColor(gray,darker);
+  padding: 0 15px;
+  overflow: hidden;
+
+  @include breakpoint(xs){
+    overflow-y: hidden;
+    position: relative;
+  }
+
+  .section {padding-top: 0; padding-bottom: 0;}
+
+  &__items {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: $container-fluid;
+    margin: 0 auto;
+
+      @include breakpoint(xs){
+        @include clearfix();
+        overflow-x: scroll;
+        overflow-y: visible;
+        display: block;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+  }
+
+  &__item {
+
+    @include text(small_soft, setColor(white, base));
+    position: relative;
+    display: block;
+    padding: 12px 0;
+    text-transform: uppercase;
+    text-align: center;
+    //width: calc(100% / 6);
+
+    @include breakpoint(xs){
+      display: inline-block;
+      margin-right: 45px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    &:hover,
+    &:focus {
+      color: setColor(white, base);
+      text-decoration: none;
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      border-radius: 30px;
+      // background-color: setColor(gray, darker);
+      transition: background-color $animation-fade;      
+    }
+
+    &.active,
+    &:hover {
+      &::after {
+        background-color: setColor(blue,base);
+      }
+    }
+
+    a,
+    .icon {
+      color: setColor(gray,darker);
+      width: 25px;
+      height: 25px;
+      &:hover,
+      &:focus,
+      &:active {
+        color: setColor(gray,darkest);
+      }
+      span {
+        display: none;
+      }
+    }
+
+    .results__mobile-actions & {
+      margin: 0;
+      @include breakpoint(xs) {
+        margin: 0;
+      }
+    }  
+
+  }
+
+  //
+  // Tab Nav variations
+  // ----------------------------------------------------------------------------
+
+  &--ontop {
+    position: fixed;
+    visibility: hidden;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding-top: 0;
+    z-index: 150;
+    transform: translateY(-100%);
+    transition: transform 500ms ease-in-out;
+    .has-header-banner & {
+      @include breakpoint(md) {
+        padding-top: 80px;
+      }
+    }
+    &.active {
+      transform: translateY(0);
+      visibility: visible;
+      @include breakpoint(sm) {
+        .has-header-banner & {
+          transform: translateY(50px);
+        }
+      }
+      .section {
+        padding: 0;
+      }
+    }
+
+    @include breakpoint(sm) {
+      padding-top: 70px;
+    }
+  }
+
+  &--panels {
+    background-color: transparent;
+    //no padding to align with the panels
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: $padding-box-double;
+
+    .tab-nav {
+      &__items {
+        display: flex;
+        flex-direction: row;
+        justify-content: stretch;
+        border-bottom: 5px solid setColor(gray, light);
+        justify-content: space-around;
+        border-bottom-right-radius: 3px;
+        border-bottom-left-radius: 3px;
+
+        @include breakpoint(xs){
+          display: flex; //override horizontal scroll for mobile tabs
+          justify-content: flex-start;
+        }
+      }
+      &__item {
+        @include title(subtle_reg, $c-font: $alt-font);
+        text-transform: uppercase;
+        margin-bottom: -5px;
+        letter-spacing: 1px;
+        width: 100%;
+        color: setColor(gray, light);
+
+        @include breakpoint(0, $screen-xs-max) {
+          margin-bottom: -2px;
+        }
+        
+        &.active {
+          @include title(subtle, $c-font: $alt-font);
+          color: setColor(blue, base);
+        }
+      } 
+    }
+
+    .results__mobile-actions & {
+      margin: 0;
+    }
+  }
+
+}

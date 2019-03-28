@@ -1,0 +1,278 @@
+//
+// Footer
+// ----------------------------------------------------------------------------
+.footer {
+
+  background-color: setColor(gray,darker);
+
+  &--gray {
+    background-color: setColor(gray,lightest);
+  }
+
+  // Footer sections
+  // --------------------------------------------------------------------------
+  .section {
+    padding: $padding-box-double;
+    margin-bottom: 0;
+
+    @include breakpoint(xs) {
+      padding: $padding-box;
+    }
+  }
+
+  &__item {
+    margin-top: $padding-box-double;
+    @include breakpoint(sm){
+      margin-top: 0;
+    }
+  }
+
+  &__block {
+    text-align: left;
+    & + & {
+      margin-top: 20px;
+    }
+  }
+  // Texts
+  // --------------------------------------------------------------------------
+  &__title {
+    @include text(footer_title, setColor(white,base));
+      text-align: center;
+      margin-bottom: 10px;
+    @include breakpoint(sm) {
+      text-align: left;
+    }
+  }
+  &__text {
+    @include text(small, setColor(gray,lighter));
+  }
+  // Forms
+  // --------------------------------------------------------------------------
+  .help-block {
+    .error {
+      @include alert(setColor(primary,base));
+      display: block;
+      padding: $padding-box;
+    }
+  }
+
+  // Site info (brand & links)
+  // --------------------------------------------------------------------------
+  &__social {
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    @include breakpoint(md){
+      margin-bottom: 25px;
+    }
+    @include breakpoint(sm) {
+      justify-content: flex-start;
+      a {
+        margin-right: 10px;
+        &:hover {
+          .icon-container{
+            &.fb {background-color:setColor(social,fb);}
+            &.tw {background-color:setColor(social,tw);}
+            &.im {background-color:setColor(social,im);}
+            &.in {background-color:setColor(social,in);}
+            &.yt {background-color:setColor(social,yt);}
+            &.gp {background-color:setColor(social,gp);}
+          }
+          .icon-social{
+            color: #FFF;
+          }
+        }
+      }
+    }
+    .awards__item,
+    .footer__brand {
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .icon-container {
+      width: 41px;
+      height: 41px;
+      padding: 9px;
+      border-radius: 50%;
+      color: setColor(gray,dark);
+      .icon {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+  &__siteinfo {
+    background-color: setColor(gray,darkest);
+  }
+
+  &__checkout {
+    background-color: setColor(gray,darkest);
+    border-top: 10px solid setColor(gray,darker);
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  &-sm-spacer {
+    @include breakpoint($screen-sm-min, $screen-sm-max){
+      margin-top: 30px;
+    }
+  }
+  &__copyright,
+  &__links a {
+    @include text(small, setColor(gray,dark));
+    display: inline-block;
+    margin-bottom: 0;
+  }
+  &__quickactions {
+    .btn {
+      text-transform: none;
+    }
+  }
+
+  // Links collapse
+  // --------------------------------------------------------------------------
+
+  &-links {
+    border-top: 1px solid setColor(gray,lighter);
+    margin-bottom: 15px;
+    &__group {
+      padding: 10px;
+      position: relative;
+      border-bottom: 1px solid setColor(gray,lighter);
+      .footer-nav__menu {
+        margin-top: 15px;
+      }
+    }
+    &__title,
+    &__title a {
+      @include text(standard, setColor(gray,lighter));
+      font-weight: 400;
+      display: block;
+      width: 100%;
+
+      .icon {
+        position: absolute;
+        top: 14px;
+        right: 10px;
+        transition: all 0.3s ease-in-out;
+      }
+    }
+    &__title a {
+      &.collapsed .icon {
+        transform: rotate(0deg);
+      }
+      &:not(.collapsed) .icon {
+        transform: rotate(90deg);
+      }
+    }
+    @include breakpoint(xs) {
+      border-top: 0;
+    }
+  }
+  .awards__item {
+    width: 85px;
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-bottom: 10px;
+    &--small {
+      width: 55px;
+    }
+    &:first-child {
+      margin-left: 0;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  &__links {  
+    font-size: 0;
+
+    a,
+    .footer__copyright {
+      display: inline-block;
+      color: setColor(gray,dark);
+      font-size: 12px;
+      line-height: 2;
+    }
+
+    a {
+
+      &:not(:first-child)::before {
+        content: "";
+        display: inline-block;
+        width: 1px;
+        height: 12px;
+        margin: -2px 8px 0;
+        background-color: setColor(gray,dark);
+        vertical-align: middle;
+      }
+    }
+
+    //mobile
+    @include breakpoint(xs) {
+      .footer__copyright {
+        display: block;
+      }
+      a:first-of-type::before {
+        display: none;
+      }
+    }
+
+  }
+  .btn--ghost {
+    color: setColor(gray,lighter);
+  }
+  //support phone on footer
+  .support-phone {
+  //   text-align: center;
+  //   border-top: 1px solid #c3c3c3;
+  //   border-bottom: 1px solid #c3c3c3;
+  //   padding: 10px 0;
+  //   @include breakpoint(sm){
+  //     text-align: left;
+  //     border:none;
+  //     padding: 0;
+  //   }
+  //   &__number,
+  //   &__number span {
+  //     @include text(footer_title, setColor(gray,lightest));
+  //   }
+  //   .form-group {
+  //     width: 100%;
+  //     label {
+  //       @include text(footer_link, setColor(gray,lightest));
+  //     }
+  //   }
+  //   .form-control {
+  //     background-color: setColor(gray,darker);
+
+  //     option { 
+  //       color: setColor(gray,lighter);
+  //       background-color: setColor(gray,darker);
+  //     }
+
+  //     &--select{
+  //       max-width: 180px;
+  //     }
+  //   }
+  //   &--footer {
+  //     @include text(big, setColor(red,dark));
+  //     font-weight: $medium-weight;
+  //     margin-top: 5px;
+  //     display: block;
+  //     position: relative;
+  //     top: auto;
+  //     right: auto;
+  //   }
+  //   &__modal {
+  //     @include text(small, setColor(gray,lighter));
+  //   }
+  }
+}

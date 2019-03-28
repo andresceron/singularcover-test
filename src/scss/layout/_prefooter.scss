@@ -1,0 +1,139 @@
+//
+// Prefooter
+// ----------------------------------------------------------------------------
+.prefooter {
+  margin-bottom: 0;
+
+  &__header {
+    text-align: center;
+  }
+
+  // Tabs
+  // -------------------------------------------------------------------------- 
+  &__tabs {
+
+    @include clearfix;
+    padding: 0;
+    border-radius: $border-radius-base;
+    border: 1px solid setColor(gray,light);
+    list-style: none;
+    margin-bottom: $padding-box-double;
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include breakpoint(sm){
+      width: 50%;
+    }
+
+    li {
+      text-align: center;
+      float: left;
+      width: 50%;
+      &:first-child a {
+        border-top-left-radius: $border-radius-base;
+        border-bottom-left-radius: $border-radius-base;
+        }
+      &:last-child a {
+        border-top-right-radius: $border-radius-base;
+        border-bottom-right-radius: $border-radius-base;
+        }
+    }
+
+    a {
+      @include text(standard);
+      font-weight: bold;
+      display: block;
+      padding: 8px;
+
+      
+
+      &:focus {
+        outline: none;
+      }
+
+    }
+    
+    .active a {
+      background-color: setColor(gray,darker);
+      color: white;
+    }
+
+    //temp until new section colored styles are applied
+    & + .prefooter__panels {
+      padding-top: 0; 
+    }    
+
+  }
+
+  // Panels
+  // --------------------------------------------------------------------------
+  &__panels {
+    
+    > .prefooter__panel {
+      display: none;
+    }
+
+    > .active {
+      display: block;
+    }
+
+  }
+
+  // Content
+  // --------------------------------------------------------------------------
+
+  &__title {
+    @include title(module);
+  }
+
+  &__list {
+    @include clearfix;
+    list-style: none;
+    margin: $padding-box-double 0 0;
+    padding: 0;
+    text-align: center;
+
+    @include breakpoint(sm){
+      text-align: left;
+    }
+
+    li {
+      @include text(small);
+      float: left;
+      width: 50%;
+      margin: 5px 0;
+      padding-right: 20px;
+
+      @include breakpoint(md) {
+        float: left;
+        width: 20%;
+      }
+
+      a {
+        @include text(small);
+        opacity: 1;
+        transition: border-color .2s linear;
+
+        &:hover {
+          color: $link-color;
+        }
+      }
+
+      span {
+        display: block;
+        width: 100%;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+
+        &:first-child {
+          font-weight: bold;
+        }
+      }
+
+    }
+
+  }
+
+}

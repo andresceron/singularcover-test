@@ -1,0 +1,427 @@
+@import './src/scss/_exports';
+
+//
+// Footer
+// ----------------------------------------------------------------------------
+.footer {
+  background-color: setColor(gray, darker);
+
+  &--gray {
+    background-color: setColor(gray, lightest);
+  }
+
+  // Footer sections
+  // --------------------------------------------------------------------------
+  .section {
+    
+    padding: $padding-box;
+    margin-bottom: 0;
+
+    @include breakpoint(md) {
+      padding: $padding-box-double;
+    }
+
+    &__copyright {
+      padding: 10px $padding-box-double; //$padding-box $padding-box-double;
+    }
+  }
+
+
+  &__item {
+    margin-top: $padding-box-double;
+    @include breakpoint(md){
+      margin-top: 0;
+    }
+    &-spacer {
+      margin-top: $padding-box-double;
+    }
+
+    &.quickactions {
+      display: none;
+      @include breakpoint(md) {
+        display: block;
+      }
+    }
+  }
+
+  &__block {
+    text-align: left;
+    & + & {
+      margin-top: 20px;
+    }
+  }
+
+  // Texts
+  // --------------------------------------------------------------------------
+  &__title {
+    @include text(footer_title, setColor(white,base));
+      text-align: left;
+      margin-bottom: 15px;
+  }
+  &__text {
+    @include text(small, setColor(gray,lighter));
+  }
+  // Forms
+  // --------------------------------------------------------------------------
+  .help-block {
+    .error {
+      @include alert(setColor(primary,base));
+      display: block;
+      padding: $padding-box;
+    }
+  }
+
+  // Site info (brand & links)
+  // --------------------------------------------------------------------------
+  &__social {
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    // justify-content: space-between;
+    a {
+      margin-right: 10px;
+    }
+
+    @include breakpoint(md){
+      margin-bottom: 25px;
+    }
+    @include breakpoint(sm) {
+      a {
+        &:hover {
+          .icon-container{
+            &.fb {background-color:setColor(social,fb);}
+            &.tw {background-color:setColor(social,tw);}
+            &.im {background-color:setColor(social,im);}
+            &.in {background-color:setColor(social,in);}
+            &.yt {background-color:setColor(social,yt);}
+            &.gp {background-color:setColor(social,gp);}
+          }
+          .icon-social{
+            color: #FFF;
+          }
+        }
+      }
+    }
+    .footer__brand {
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .icon-container {
+      width: 41px;
+      height: 41px;
+      padding: 9px;
+      border-radius: 50%;
+      color: setColor(white,base);
+      .icon {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  &__siteinfo {
+    background-color: setColor(gray,darkest);
+  }
+
+  &__checkout {
+    background-color: setColor(gray,darkest);
+    border-top: 10px solid setColor(gray,darker);
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+  &__copyright,
+  &__links {
+    margin-top: 10px;
+    line-height: 40px;
+    a {
+      @include text(small, setColor(gray,dark));
+      display: inline-block;
+      margin-bottom: 0;
+    }
+  }
+
+  &__quickactions {
+    .btn {
+      text-transform: none;
+    }
+  }
+
+  // Links collapse
+  // --------------------------------------------------------------------------
+
+  &-links {
+    border-top: 1px solid setColor(gray,lighter);
+    margin-bottom: 15px;
+    &__group {
+      padding: 10px;
+      position: relative;
+      border-bottom: 1px solid setColor(gray,lighter);
+      .footer-nav__menu {
+        margin-top: 15px;
+      }
+    }
+    &__title,
+    &__title a {
+      @include text(standard, setColor(gray,lighter));
+      font-weight: 400;
+      display: block;
+      width: 100%;
+
+      .icon {
+        position: absolute;
+        top: 14px;
+        right: 10px;
+        transition: all 0.3s ease-in-out;
+      }
+    }
+    &__title a {
+      &.collapsed .icon {
+        transform: rotate(0deg);
+      }
+      &:not(.collapsed) .icon {
+        transform: rotate(90deg);
+      }
+    }
+    @include breakpoint(xs) {
+      border-top: 0;
+    }
+  }
+
+  &__links {  
+    font-size: 0;
+
+    a,
+    .footer__copyright {
+      display: inline-block;
+      color: setColor(white, base);
+      font-size: 12px;
+      margin-top: 4px;
+      line-height: 1.5;
+      @include breakpoint(md) {
+        line-height: 4;
+      }
+    }
+
+    a {
+
+      &:not(:first-child)::before {
+        content: "";
+        display: inline-block;
+        width: 1px;
+        height: 12px;
+        margin: -2px 8px 0;
+        background-color: setColor(gray,dark);
+        vertical-align: middle;
+      }
+    }
+
+    //mobile
+    @include breakpoint(xs) {
+      .footer__copyright {
+        display: block;
+      }
+      a:first-of-type::before {
+        display: none;
+      }
+    }
+
+  }
+
+.btn--ghost {
+  color: setColor(gray,lighter);
+}
+
+&__left {
+  @include make-col-ready();
+  @include make-col(12);
+  padding: 0;
+  text-align: center;
+
+  @include breakpoint(md) {
+    @include make-col(10);
+    text-align: left;
+  }
+} 
+
+&__right {
+  display: none;
+  @include breakpoint(md) {
+    display: inline-block;
+    text-align: right;
+    @include make-col-ready();
+    @include make-col(2);
+  }
+}
+
+.footer-logo {
+fill: setColor(white, base);
+}
+
+&__brand {
+
+  display: inline-block;
+  width: 127px;
+  height: 72px;
+  text-align: center;
+  vertical-align: top;
+  padding: 0 10px;
+
+  svg {
+    margin: 10px auto 4px;
+    width: 107px;
+    height: 53px;
+    transition: fill $animation-fade;
+  }
+}
+
+  //
+// Footer Navigation
+// ----------------------------------------------------------------------------
+&-nav {
+  
+  // Section Content
+  // --------------------------------------------------------------------------
+  &__menu {
+
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: setColor(gray,lightest);
+
+    > li {
+      @include text(footer_link, setColor(gray,lightest));
+      margin-bottom: 10px;
+
+      > a,
+      .link {
+        @include text(footer_link, setColor(gray,lightest));
+        opacity: 1;
+        transition: opacity $animation-fade;
+        &:hover {
+          opacity: 0.6;
+        }
+      }
+    }
+    &--2col {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: setColor(gray,lightest);
+
+      > li {
+        @include text(footer_link, setColor(gray,lightest));
+        display: block;
+        margin-bottom: 10px;
+        width: 49%;
+        float: left;
+        > a,
+        .link {
+          @include text(footer_link, setColor(gray,lightest));
+          opacity: 1;
+          transition: opacity $animation-fade;
+          &:hover {
+            opacity: .6;
+          }
+        }
+      }
+    }
+
+    @include breakpoint(0, $screen-sm-max) {
+      &-sm {
+        > li {
+          display: inline-block;
+          width: 49%;
+          &.vt{
+            vertical-align: top;
+          }
+        }
+      }
+    }
+
+    &--inline {
+      > li {
+        display: inline-block;
+        margin-right: 10px;
+        margin-bottom: 0;
+        padding-right: 10px;
+        border-right: 1px solid setColor(gray,lighter);
+        &:last-child {
+          border-right: none;
+        }
+      }
+    }
+    &--bullet {
+      > li {
+        position: relative;
+        margin-bottom: 0;
+        border-bottom: 1px solid transparent;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        padding-left: 30px;
+        &:first-child {
+          padding-top: 0;
+          .icon {
+            top: 2px;
+          }
+        }
+        .icon {
+          width: 15px;
+          height: 15px;
+          color: setColor(blue,base);
+          position: absolute;
+          top: 6px;
+          left: 0;
+        }
+      }
+    }
+
+    .icon {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      margin-right: $margin-icon-text;
+    }
+
+  }
+  
+  // Special list items
+  // ------------------------------------------------------------------------
+  .footer-nav__card {
+    .icon {
+      margin: 0;
+      fill: setColor(gray,darker);
+    }
+  }
+  
+  &__app {
+    text-align: center;
+    display: inline-block;
+    margin-top: 5px;
+    width: 49%;
+
+    @include breakpoint(md) {
+      width: auto;
+      margin-right: 10px;
+    }
+    @include breakpoint(sm) {
+      text-align: left;
+    }
+
+    img {
+      max-width: 145px;
+      height: auto;
+      margin: 0 auto;
+    }
+  }
+
+}
+
+}

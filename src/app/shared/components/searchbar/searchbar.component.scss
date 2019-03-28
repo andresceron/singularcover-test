@@ -1,0 +1,648 @@
+@import './src/scss/_exports';
+
+//
+// Search Bar (Desktop version)
+// ----------------------------------------------------------------------------
+.search-bar {
+  position: absolute;
+  top: 67vh;
+  left: 50%;
+  width: 100%;
+  min-width: 300px;
+  max-width: calc(100% - 40px);
+  transform: translate3d(-50%,-50%,0);
+  z-index: 1000;
+
+  @include breakpoint(lg) {
+
+    top: $hero-height-desktop/2 + 110px;
+    width: 66.666666667%;
+    max-width: $searchbar-md-width;    
+  
+    .has-fixedheader & { // Move search-bar to the z-index top when the navbar is fixed
+      z-index: 1200;
+    }
+  }
+
+  @include breakpoint(xl) {
+    max-width: $searchbar-lg-width;
+  }
+
+  &__headline {
+    position: absolute;
+    width: 100%;
+    //max-width: calc(100% - 40px);
+    left: 50%;
+    bottom: 0;
+    margin-bottom: 55px;
+    padding-bottom: 25px;
+    transform: translate(-50%);
+    text-align: center;
+  }
+  &__title,
+  &__tagline {
+    line-height: 1;
+    opacity: 1;
+    transition: opacity $animation-fade;
+    pointer-events: none;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include breakpoint(lg) {
+      max-width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  &__title {
+    @include title(gigantic, $color: #FFFFFF);
+    line-height: 1;
+    margin-bottom: 5px;
+  }
+
+  &__tagline {
+    @include title(tagline, $color: #FFFFFF);
+  }
+
+  &__cta {
+    margin-top: 20px; 
+  }
+
+  .search-wizard {
+    position: absolute;
+    top: calc(100% + 3px);
+    z-index: 1;
+  }
+
+  &__form {
+
+    display: none;
+    height: 55px;
+    width: 100%;
+    border-radius: 30px;
+    background: white;
+    font-size: 0;
+    white-space: nowrap;
+  
+    @include breakpoint(lg) {
+      display: block;
+    }
+
+    .form-group + .form-group {
+      border-left: 1px solid setColor(gray,light);
+    }
+
+  }
+
+  .form-group {
+    border: 2px solid transparent;
+    text-align: left;
+    transition: background-color $animation-fade;
+  
+    &:first-child {
+      border-radius: 25px 0 0 25px;
+    }
+
+    &.has-focus,
+    &.is-active {
+       border: 2px solid setColor(blue);
+    }
+    
+    &.has-error {
+
+      border-color: setColor(red,dark);
+      transition: border 0.2s ease-in-out;
+
+      input {
+   
+        @include placeholder(){
+          color: setColor(red,dark); 
+        }
+   
+        color: setColor(red,dark);
+        border: none;
+        box-shadow: none;
+   
+      }
+   
+    }
+
+    .alert {
+      margin-top: 5px;
+    }
+
+  }
+
+  .form-group,
+  .btn {
+    display: inline-block;
+    vertical-align: top;
+  }
+  .form-group {
+    margin: 0;
+  }
+
+  &__destination {
+    padding-left: 7px;
+  }
+
+  &__destination,
+  &__guests {
+    width: 29%;
+  }
+
+  &__in,
+  &__out {
+    width: 16.5%
+  }
+
+  
+
+  @include breakpoint(lg) {
+
+    &__destination,
+    &__guests {
+      width: 26%;
+    }
+
+    &__in,
+    &__out {
+      width: 16%;
+    }
+
+  }
+  
+  &__label {
+
+    margin: 0;
+    padding: 3px 8px 0;
+    color: setColor(blue, light);
+    font-weight: normal;
+    font-size: 11px;
+    line-height: 1.363636364;
+    text-transform: uppercase;
+    overflow: hidden;
+
+    .has-focus &,
+    .is-active & {
+      color: setColor(blue);
+    }
+
+    @include breakpoint(lg) {
+      padding: 5px 16px 0;
+    }
+
+  }
+
+  &__form-control {
+  
+    @include text(small);
+    height: 31px;
+    padding: 0 8px 4px;
+    border: none;
+    background-color: transparent;
+    box-shadow: none;
+    //with readonly status cursor shows as default
+    cursor: pointer;
+  
+    &:focus {
+      box-shadow: none;
+    }
+
+    &[disabled], 
+    &[readonly], 
+    fieldset[disabled] .form-control {
+      background-color: transparent;
+    }
+  
+    @include placeholder {
+      font-size: 13px;
+    }
+
+    @include breakpoint(lg) {
+      padding: 0 16px 4px;
+    }
+
+    // Disable auto-zoom on iOS input field focus
+    @media screen and (max-width: $screen-md-max) and (-webkit-min-device-pixel-ratio: 0) {
+
+      font-size: 13px;
+      line-height: 18px;
+    
+      @include placeholder {
+        line-height: 22px;
+      }
+
+    }    
+
+  }
+
+  &__btn {
+
+    width: 9%;
+    margin-right: -1px;
+    height: 55px;
+    padding: 15px;
+    border: none;
+    border-radius: 0 30px 30px 0;
+    font-size: 15px;
+    line-height: 1.333333333;
+    text-transform: uppercase;
+    background-color: setColor(blue, base);
+    color: white;
+  
+    .icon {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 24px;
+      height: 24px;
+      margin-top: -12px;
+      margin-left: -12px;
+      opacity: 1;
+      transition: opacity $animation-fade;
+    }
+
+    &:hover,
+    &:focus {
+      outline: none;
+      color: white;
+    }
+
+    @include breakpoint(lg) {
+      width: calc(16% + 2px);
+    }
+
+    @include breakpoint(0,$screen-lg) {
+  
+      &.btn--loading {
+
+        > span:first-child {
+
+          position: static;
+        
+          .icon {
+            display: block;
+          }
+
+          span {
+            display: none;
+          }
+
+          &::after {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            right: auto;
+            margin-top: -8px;
+            margin-left: -8px;
+          }
+
+        }
+
+        &.on {
+
+          .icon {
+            opacity: 0;
+          }
+        
+        }
+
+      }
+
+    }
+
+  }
+
+}
+
+
+
+//
+// Mobile search bar
+// ----------------------------------------------------------------------------
+
+.mobile-search-bar {
+
+  margin: 0 auto;
+  width: 100%;
+  max-width: 460px;
+  height: 54px;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 5px;
+
+  // .has-fixedheader & { // Prevent .mobile-search-bar display when header is fixed
+  //   display: none;
+  // }
+
+  @include breakpoint(lg) {
+    border-radius: 2px;
+  }
+
+  @include breakpoint(lg) {
+    display: none;
+  }
+
+  &__form {
+    padding-right: 54px;
+    position: relative;
+    box-shadow: 0 1px 3px rgba(black,0.14);
+  }
+
+  &__btn {
+
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 54px;
+    height: 54px;
+    border: 0;
+    background-color: transparent;
+    pointer-events: none;   
+  
+    .icon {
+      width: 20px;
+      height: 20px;
+      color: $panel-icon-color;
+    }
+
+  }
+
+  .form-group {
+    width: 100%;
+    margin: 0;
+  }
+
+  label {
+    margin: 0;
+    padding: 6px 23px 0;
+    color: setColor(gray,dark);
+    font-weight: normal;
+    font-size: 11px;
+    line-height: 1.363636364;
+    text-transform: uppercase;
+  }
+
+  .form-control {
+
+    height: 33px;
+    padding-top: 0;
+    padding-bottom: 4px;
+    border: none;
+    background-color: transparent;
+    color: black;    
+    font-weight: normal;
+    font-size: 16px;
+    box-shadow: none;
+    pointer-events: none;
+    padding-left: 23px;
+
+    @include placeholder(){
+      color: $gray-base; 
+    }
+
+  }
+
+}
+
+//
+// Mobile search forms
+// ----------------------------------------------------------------------------
+.mobile-search {
+
+  [readonly] {
+    background-color: white;
+  }
+
+  .form-group {
+    margin-bottom: 25px;
+  }
+
+  fieldset .form-group {
+    margin-bottom: 15px;
+  }  
+
+  legend {
+    color: setColor(gray,darker);
+    border: none;
+    display: block;
+    float: left;
+    max-width: 100%;
+    margin: 10px 0 15px;
+    font-family: $alt-font;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 1;    
+  }
+
+  &__actions {
+    position: fixed;
+    left: $padding-box;
+    right: $padding-box;
+    bottom: $padding-box + 10;
+    margin-top: 25px;
+    margin-right: auto;
+    margin-left: auto;
+
+    .btn {
+      display: block;
+      width: auto;
+      min-width: 205px;
+      margin: 0 auto;
+      background-color: white;
+    }
+  }
+
+  &__toggle-adv {
+    margin: 10px 0 25px;
+    text-align: center;
+    .more { font-size: 13px; }
+  }
+
+  &__collapse {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    background-color: white;
+    transition: all $animation-move--slow;
+    &.in {
+      max-height: 9000px;
+      opacity: 1;
+    } 
+  }
+
+  .search-destinations {
+
+    max-height: 60vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    &__list {
+      
+      margin: 0 $padding-box;
+      position: relative;
+
+      li {
+        padding-left: 34px;
+        .icon {
+          top: 0;
+          left: 0;
+        }
+      }
+
+      a {
+        padding-left: 7px;
+      }
+    }
+    
+    span {
+      padding: 0;
+    }
+
+  }
+
+  //Guests
+  //--------------
+  &__guests {
+
+    //for mobile only
+    @media only screen and (max-width: 991px) {
+      padding-left: $padding-box;
+      padding-right: $padding-box;
+      transition: transform 0.5s ease-out;
+      position: absolute;
+      left: 0;
+      width: 100%;
+      //for scroll
+      max-height: calc(100% - 150px); //full height minus cta height
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      top: 50%;
+      transform: translateY(-50%);
+
+      &-choices.ng-hide {
+        transform: translateX(-100%);
+      }
+       &-spinners.ng-hide {
+        transform: translateX(100%);
+       }
+     
+      &.ng-show,
+      .ng-show {
+        transform: translateX(0);
+      }
+
+      &.order {
+        min-height: 100%;
+      }
+
+      &.page {
+        &__minus1 {
+          transform: translateX(-100%);
+        }
+        &__0 {
+          transform: translateX(0);
+        }
+        &__1 {
+          transform: translateX(100%);
+        }      
+        &__2 {
+          transform: translateX(200%);
+        }
+      }
+
+      .form-group {
+        @include clearfix();
+      }
+      label {
+        //text standard
+        color: setColor(gray,dark);
+        font-size: 14px;
+        float: left;
+        margin-top: 10px;
+        margin-bottom: 0;
+      }
+      .spinner-group {
+        float: right;
+      }
+      .alert {
+        float: left;
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__filters {
+
+    //for mobile only
+    @media only screen and (max-width: 991px) {
+      padding-left: $padding-box;
+      padding-right: $padding-box;
+      transition: transform 0.5s ease-out;
+      position: absolute;
+      left: 0;
+      width: 100%;
+      //for scroll
+      max-height: calc(100% - 150px); //full height minus cta height
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    
+  }
+
+  &__order {
+    padding: 0 15px;
+  }
+
+  //More common choices
+  //----------------------------
+  &__guest-choice { 
+    border-color: setColor(gray,light);
+    border-width: 1px;
+    border-style: solid;
+    margin-bottom: 20px;
+    text-align: center;
+
+    a {
+      min-height: 70px;
+      padding: $padding-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    span {
+      //text standard
+      color: setColor(gray,dark);
+      font-size: 14px;
+      display: block; //for stand alone spans
+    }
+    .icon ~ span {
+      max-width: 60%;
+    }
+    .icon {
+      color: setColor(gray,dark);
+      font-size: 35px;
+
+      &.icon {
+        margin-left: -10px; //move icons closer to each other
+      }
+    }
+    &.selected {
+      background-color: setColor(gray,lighter);
+      border-color: setColor(blue,base);
+
+      span {
+        //text standard bold
+        color: setColor(gray,darker);
+        font-weight: 500;
+      }
+    }
+  }
+
+}

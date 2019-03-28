@@ -1,0 +1,50 @@
+//
+// Prices
+// --------------------------------------------------------
+.price {
+	//white-space: nowrap;
+	font-family: $price-font;
+	font-weight: $price-weight;
+	font-size: $price-size;
+
+	&__currency {
+		font-size: 0.8em;
+	}
+
+	&__from {
+		color: setColor(gray,darker);
+		font-size: 0.7em;
+		font-weight: normal;
+	}
+
+	//Price flavours
+	//----------------------------------------
+	&--lined {
+		text-decoration: line-through;
+		color: setColor(gray,dark);
+		white-space: nowrap;
+	}
+  &--original {
+		color: setColor(gray,dark);
+		display: block; //to ensure it always on bottom of discoumpted price
+		text-decoration: line-through;
+		white-space: nowrap;
+  }
+  &--total {
+  	color: setColor(red, dark);
+  }
+  &--win {
+  	font-size: map-fetch($text-props, small size);
+  }
+  &--plus {
+    color: setColor(green, dark);
+
+    &::before {
+    	content: '+';
+    }
+  }
+  &--minus {
+    color: setColor(red, dark);
+  }
+
+}

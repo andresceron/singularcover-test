@@ -1,0 +1,121 @@
+//
+// Benefits list
+// ----------------------------------------------------------------------------
+.benefits-list {
+
+  @include clearfix;
+  @include make-row();
+  @extend %list-clean;
+  margin-bottom: $padding-box-double;
+
+  &__item {
+    @include make-sm-column(3);
+    margin-bottom: $padding-box-double;
+    text-align: center;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    @include breakpoint(sm){
+      margin-bottom: 0;
+      text-align: left;
+    }
+
+    &__title {
+      @include title(subtle);
+      margin-bottom: 10px;
+    }
+
+    &__text {
+      @include text(standard, setColor(gray, dark));
+    }
+
+    &__img {
+      max-width: 400px;
+      width: 100%;
+      margin-bottom: $padding-box;
+    }
+
+    &__content {
+      margin: 0 auto;
+    }
+    
+  }
+
+
+  &-banner {
+    .benefits-list__item {
+
+      &__img,
+      &img .icon {
+        color: setColor(blue,base);
+      }
+
+    }
+  }
+
+
+  &--compact {
+
+    .benefits-list__item {
+
+      font-size: 16px;
+      float: left;
+      margin: 8px 0;
+      font-size: 20px;
+      line-height: 1.1;
+      text-align: left;
+
+      @include breakpoint(xs) {
+
+        width: 33.3333333%;
+        max-width: none;
+        padding: 10px;
+      
+        .icon {
+          display: block;
+          margin: 0 auto 5px;
+        } 
+
+        span {
+          display: block;
+          text-align: center;
+        }
+    
+      }
+
+      @include breakpoint(sm) {
+      
+        position: relative;
+        width: 50%;
+        padding: 7px 0 7px 60px;
+
+        .icon {
+          position: absolute;
+          left: 0;
+          top: 50%;
+          margin: -18px auto auto;
+        }
+      
+      }
+
+    }
+
+  }
+  //compact end
+
+  &__highlight {
+    
+    font-size: 36px;
+    font-family: $main-font;
+
+    p {
+      margin:0;
+    }
+
+  }
+  //highlight end
+
+}
+//benefits list end

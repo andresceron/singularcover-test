@@ -1,0 +1,321 @@
+.list {
+
+  // Unformatted list
+  // --------------------------------------------------------  
+	&--clean {
+  	@extend %list-clean;
+  }
+
+  // List of text elements
+  // --------------------------------------------------------  
+  &--text {
+    > li {
+
+      + li {
+        margin-top: 8px; 
+      }
+    }
+  }
+	
+  // Icon list: text with small icon on the left side
+  // --------------------------------------------------------
+  &--icons {
+	
+    @extend %list-clean;
+    text-align: left;
+	
+    > li {
+      line-height: 1.666666667; 
+      position: relative;
+      padding-left: 2.4em;
+    
+      + li {
+        margin-top: 8px;  
+      }
+
+    }
+
+    .icon {
+      position: absolute;
+      left: 0;
+      color: setColor(gray,light);
+      font-size: 1.666666667em;
+    }
+
+    &-xs {
+      > li {
+        padding-left: 48px;
+      }
+      .icon {
+        font-size: 1.334em;
+        &--blue {
+          color: setColor(blue,base);
+          fill: setColor(blue,base);
+        }
+        &--secondary {
+          color: setColor(secondary,base);
+          fill: setColor(secondary,base);
+        }
+        &-arrow-circle {
+          top: 3px;
+          left: 6px;
+        }
+      }
+    }
+
+    // membercrd perkslist variations
+    &.membercard-perkslist {
+      margin-bottom: 0;
+      > li {
+        padding-left: 25px;
+        .icon {
+          font-size: 1.1em;
+          top: 5px;
+        }
+      }
+    }
+
+  }
+
+  // Bullet list
+  // --------------------------------------------------------
+  &--bullet {
+    @extend %list-clean;
+    @extend .list--text;
+    list-style-type: disc;
+    list-style-position: inside;
+  }
+
+  // Buttons Inline List
+  // --------------------------------------------------------
+  &--buttons {
+    @extend %list-clean;
+    text-align: center;
+
+    @include breakpoint(sm) {
+      text-align: left;
+    }
+
+    > li,
+    &__item {
+      text-align: center;
+      display: inline-block;
+      margin-top: 5px;
+      width: auto;
+      margin-right: 10px;
+      @include breakpoint(sm) {
+        text-align: left;
+      }
+      img {
+        max-width: 145px;
+        width: 100%;
+        height: auto;
+        margin: 0 auto;
+      }
+    }
+
+    &--center {
+      text-align: center;
+    }
+  }
+  // Fat Bullet list
+  // --------------------------------------------------------
+  &--fat-bullet {
+    @extend %list-clean;
+    @extend .list--text;
+    position: relative;
+
+    > li {
+      @include text(standard);
+      text-align: left;
+      padding-left: 1.3em;
+
+      &::before {
+        content: "";
+        height: 10px;
+        width: 10px;
+        display: block;
+        position: absolute;
+        left: 0;
+        margin-top: 5px;
+        border-radius: 50%;
+        background-color: setColor(green,base);
+      }
+    }
+
+    &--lg {
+      > li {
+        margin-bottom: 15px;
+
+        &::before {
+          margin-top: 5px;
+        }
+      }
+    }
+  }
+
+  // Checks list
+  // --------------------------------------------------------
+  &--checks {
+    @extend %list-clean;
+    @extend .list--text;
+    position: relative;
+
+    > li {
+      @include text(standard);
+      text-align: left;
+      padding-left: 1.3em;
+
+      &::before {
+        content: "";
+        height: 1em;
+        width: 1em;
+        display: block;
+        position: absolute;
+        left: 0;
+        margin-top: 2px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: url("data:image/svg+xml,%3Csvg%20width%3D%2729px%27%20height%3D%2728px%27%20viewBox%3D%270%200%2029%2028%27%20version%3D%271.1%27%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20xmlns%3Axlink%3D%27http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%27%3E%3Cg%20id%3D%27Page-1%27%20stroke%3D%27none%27%20stroke-width%3D%271%27%20fill%3D%27none%27%20fill-rule%3D%27evenodd%27%3E%3Cg%20id%3D%27Check-out%27%20transform%3D%27translate(-86.000000%2C%20-2655.000000)%27%20fill%3D%27%2300CEC0%27%3E%3Cg%20id%3D%27Group-2%27%20transform%3D%27translate(29.000000%2C%202393.000000)%27%3E%3Cpolygon%20id%3D%27Shape%27%20points%3D%2768.5054938%20289.567568%2057.0740741%20278.144218%2062.0701954%20273.148798%2067.6035341%20278.675405%2079.3148724%20262.290541%2085.0687529%20266.395939%27%3E%3C%2Fpolygon%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+        background-size: 100%;
+        background-position:center;
+      }
+    }
+
+    &--lg {
+      > li {
+        margin-bottom: 15px;
+
+        &::before {
+          margin-top: 5px;
+        }
+
+        .captation & {
+          margin-bottom: 35px;
+        }
+      }
+    }
+  }
+
+  // Cart list
+  // --------------------------------------------------------
+	&--cart {
+
+    @extend %list-clean;
+    margin-bottom: 30px;
+
+    > li {
+
+      display: flex;    
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: baseline;      
+      padding: 20px 0;
+      border-bottom: 1px solid setColor(gray,light);
+      font-size: 12px;
+
+    }
+
+    &__item {
+      max-width: 60%;
+    }
+
+    &__field {
+      margin-top: 4px;
+      &:first-child{margin-top:0;}
+    }
+
+    .list__badges > * {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+  }
+
+  // Ol List with numbers
+  // --------------------------------------------------------
+  &--numbers {
+    @extend %list-clean;
+    counter-reset: ordinal-counter;
+
+    li {
+      
+      &::before {
+        counter-increment: ordinal-counter;
+        content: counter(ordinal-counter);
+        border: 1px solid $gray-base;
+        border-radius: 50%;
+        display: inline-block;
+        font-family: $alt-font;
+        font-size: 23px;
+        font-weight: bold;
+        line-height: 1;
+        margin-right: 20px;
+        padding: 5px;
+        width: 36px; 
+        height: 36px;
+        text-align: center;
+        vertical-align: top;
+      }
+
+      span {
+        display: inline-block;
+        width: 100%;
+        @include breakpoint(sm) {
+          width: 83%;
+          text-align: left;      
+        }
+      }
+    }
+  }
+
+  // Numbered list with letters
+  // --------------------------------------------------------
+  &--letters {
+    list-style-type: lower-alpha;
+  }
+
+  // Sponsor List Items image For landings footers
+  // --------------------------------------------------------
+  &-figures {
+    @include list-clean();
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 25px;
+    margin-bottom: 15px;
+
+    @include breakpoint(sm) {
+      flex-wrap: nowrap;
+      justify-content: space-around;
+      text-align: center;
+    }
+
+    li {
+      margin-bottom: 10px;
+      width: 50%;
+
+      @include breakpoint(sm) {
+        width: auto;
+        margin-right: 15px;
+        margin-bottom: 0;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    &__number {
+      color: setColor(blue, dark);
+      font-size: 36px;
+      font-weight: $medium-weight;
+      display: block;
+    }
+    &__text {
+      @include title(subtle_reg, setColor(blue, dark));
+    }
+  }
+
+}

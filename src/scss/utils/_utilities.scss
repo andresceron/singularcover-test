@@ -1,0 +1,218 @@
+//
+// UTILITIES
+// ----------------------------------------------------------------------------
+
+
+// TEXT
+// ------------------------------
+%text--brand {
+  color: setColor(red,dark);
+}
+%text--alt {
+  color: setColor(blue,base);
+}
+%text--secondary {
+  color: setColor(secondary,base);
+}
+%text--center {
+  text-align: center;
+}
+%text--right {
+  text-align: right;
+}
+%bold--brand {
+  color: setColor(red,dark);
+  font-weight: bold;
+}
+%bold--alt {
+  color: setColor(blue,base);
+  font-weight: bold;
+}
+%bold--dark {
+  color: setColor(gray,darker);
+  font-weight: bold;
+}
+%text--underline{
+  text-decoration: underline;
+}
+%text-strike {
+  text-decoration: line-through;
+}
+
+.bold {
+  font-weight: bold;
+}
+.text--brand {
+  @extend %text--brand;
+}
+.text--alt {
+  @extend %text--alt;
+}
+.text--secondary {
+  @extend %text--secondary;
+}
+.text--center {
+  @extend %text--center;
+}
+.text--right {
+  @extend %text--right;
+}
+.bold--brand {
+  @extend %bold--brand;
+}
+.bold--alt {
+  @extend %bold--alt;
+}
+.bold--dark {
+  @extend %bold--dark;
+}
+.text--underline {
+  @extend %text--underline;
+}
+.text-strike {
+  @extend %text-strike;
+}
+
+.brand-primary {
+  color: $primary;  
+}         
+.brand-success {
+  color: $success;
+}
+.brand-info {
+  color: $info;
+}
+.brand-warning {
+  color: $warning;
+}
+.brand-danger {
+  color: $danger;
+}
+
+
+// COLOR
+// ------------------------------
+.color-great {
+  color: setColor(member-level,great);
+}
+.color-circle {
+  color: setColor(member-level,circle);
+}
+.color-star {
+  color: setColor(member-level,star);
+}
+.color-top {
+  color: setColor(member-level,top);
+}
+
+
+// BORDERS
+// ------------------------------
+@mixin has-dividers($position: null) {
+  border-bottom: 1px solid setColor(gray,light);
+  border-top: 1px solid setColor(gray,light);
+  margin-bottom: 30px;
+  margin-top: 30px;
+  padding-bottom: 30px;
+  padding-top: 30px;
+
+  @if ($position == 'top') {
+    border-bottom: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+  @else if ($position == 'bottom') {
+    border-top: 0;
+    padding-top: 0;
+    margin-top: 0;
+  }
+}
+.has-dividers {
+  @include has-dividers();
+  &--top {
+    @include has-dividers(top);
+  }
+  &--bottom {
+    @include has-dividers(bottom);
+  }
+}
+
+@mixin border($top: false, $right: false, $bottom: false, $left: false, $color: setColor(gray,light)) {
+  @if($top or $bottom or $left or $right){
+    border-color: $color;
+  }
+  @if ($top) {
+    border-top-width: 1px;
+    border-top-style: solid;
+  }
+  @if ($bottom) {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+  }
+  @if ($left) {
+    border-left-width: 1px;
+    border-left-style: solid;
+  }
+  @if ($right) {
+    border-right-width: 1px;
+    border-right-style: solid;
+  }
+}
+
+.border {
+  @include border(true,true,true,true);
+  &--top {@include border(true,false,false,false);}
+  &--right {@include border(false,true,false,false);}
+  &--bottom {@include border(false,false,true,false);}
+  &--left {@include border(false,false,false,true);}
+}
+
+// MARGINS
+// ------------------------------
+.nomargin {
+  margin: 0;
+}
+.margin-block {
+  &--top {
+    margin-top: 30px;
+  }
+  &--bottom {
+    margin-bottom: 30px;
+  }
+  &--left {
+    margin-left: 30px;
+  }
+  &--right {
+    margin-right: 30px;
+  }
+}
+
+
+// LAYOUT
+// ------------------------------
+.inline-block {
+  display: inline-block;
+}
+.full-height {
+  height: 100%;
+}
+
+//leave more space between columns
+.row--loosecols {
+  div[class^=col]:first-child {
+    padding-right: 40px;
+  }
+}
+.xs-center {
+  @include breakpoint(xs) {
+    padding: 0;
+    text-align: center;
+  }
+}
+
+// Single column centered in row
+.center-block {
+  float: none !important;
+  margin-left: auto;
+  margin-right: auto;
+}

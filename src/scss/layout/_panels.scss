@@ -1,0 +1,234 @@
+//
+// Panels
+// ----------------------------------------------------------------------------
+.panel-mobile--on {
+  overflow: hidden;
+  position: fixed; //hard disable scrolling on body when a panel is open
+}
+
+.panel {
+  background-color: white;
+
+  &--has-scroll {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  &__header {
+    padding: 22px 0;
+    border-bottom: 1px solid setColor(gray,light);
+    color: setColor(gray,darker);
+    text-align: center;
+    cursor: pointer;
+
+    .icon-arrow-left {
+      position: absolute;
+      left: 23px;
+      top: 50%;
+      margin-top: -6px;
+      color: $panel-icon-color;
+    }
+  }
+
+  &__title {
+    position: relative;
+    margin: 0;
+    font-family: $alt-font;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 1.142857143;
+    text-transform: uppercase;
+  
+    span {
+      line-height: 1;
+    }
+  }
+
+  &__content {
+    padding: $padding-box;
+
+    &--hasfooter {
+      padding-bottom: 100px;
+    }
+
+    &--guests {
+      height: 100%;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+  }
+
+  &__footer {
+    border-top: 1px solid setColor(gray,light);    
+    padding: 10px;
+    
+    @include breakpoint($screen-md) {
+      border-top: none;
+    }
+
+  }
+
+  &__wrap {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  &--mobile {
+    position: fixed;  
+    top: 0;
+    left: 0;
+    z-index: 3000;    
+    width: 100%;
+    height: 100%;
+    border: 0;
+
+    &.ng-enter {
+      animation: zoomIn .3s;
+    }
+
+    &.ng-leave {
+      animation: zoomOut .3s;
+    }
+
+    &.panel--has-scroll {
+      .panel__wrap {
+        padding-top: 61px;
+      }
+      .panel__header {
+        background-color: setColor(white,base);
+        position: fixed;
+        width: 100%;
+        z-index: 5;
+        left: 0;
+        top: 0;
+      }
+    }
+  
+  }
+
+  &-signup {
+    background-color: setColor(gray,lightest);
+    padding: $padding-box;
+    box-shadow: 0 2px 4px rgba(black,.3);
+
+    @include breakpoint(sm){
+      padding: $padding-box*2;
+    }
+
+    //FOOTER JOIN WANUP TODAY ANCHOR ON MOBILE
+    &__footer {
+      
+      position: fixed;
+      display: block;
+      bottom:0;
+      left: 0;
+      width: 100%;
+      z-index: 200;
+      background-color: setColor(gray,lighter);
+      box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+      padding: 10px;
+      transform: translateY(+100px);
+      transition: transform 0.5s ease-out;
+
+      &--active{
+        transform: translateY(0px);
+      }
+
+    }
+
+    &__cta {
+      max-width: 365px;
+      width: 100%;
+      margin: 0 auto;
+      display:block
+    }
+
+  }
+
+  &-password {
+
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 90%;
+
+    @include breakpoint(sm) {
+      max-width: 60%;
+    }
+    
+    @include breakpoint(md) {
+      max-width: 100%;
+    }
+
+    .form-group {
+      @include breakpoint($screen-pblet-max) {
+        max-width: 75%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
+    &__title {
+      @include text(big);
+      display: block;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    &--boxed {
+
+      .panel-password {
+        @include breakpoint(md) {
+          background-color: setColor(gray,lighter);
+          padding: $padding-box;
+          box-shadow: 0 2px 4px rgba($gray-base,.3);
+        }
+        &__title {
+          @include title(section);
+          display: block;
+          margin-bottom: 30px;
+          text-align: center;
+        }
+        .form-group {
+          max-width: 100%;
+        }
+      }
+    }
+    
+  }
+
+  &-hotelinfo {
+    left: 100%;
+    transition: left .3s ease-out;
+    &.show {
+      left: 0;
+      &.panel--mobile.panel--has-scroll .panel__header {
+        left: 0;
+        transition: left .3s ease-out;
+      }
+    }
+    .hotel-section__title {
+      margin-bottom: 30px;
+    }
+    &.panel--mobile.panel--has-scroll .panel__header {
+      left: 100%;
+      transition: left .3s ease-out;
+    }
+    .has-dividers {
+      border: none;
+    }
+  }
+
+  &__map {
+    height: calc(100vh - 61px);
+    .hotel-location__map {
+      margin: 0;
+      height: 100%;
+      ng-map {
+        height: 100%;
+      }
+    }
+  }
+
+}

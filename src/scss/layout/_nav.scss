@@ -1,0 +1,49 @@
+//
+// Nav
+// ----------------------------------------------------------------------------
+.nav {
+
+  position: relative;
+
+  &__collapsable,
+  &__collapsed {
+    position: absolute;
+    transition: opacity .15s linear;    
+  }
+
+  &__collapsed {
+    right: 0;
+    padding: 0 10px;
+  }
+
+  &__collapsable {
+    left: 0;
+  }
+
+}
+
+// Collapsable (the full menu, collapsed in small & medium devices)
+// ----------------------------------------------------------------------------
+.nav__collapsable {
+
+  @include clearfix;
+  display: none;
+
+  .main-menu {
+    float: left;
+  }
+
+  @include breakpoint($screen-lg) {
+
+    display: block;
+    padding: 0;
+    opacity: 1;
+
+    .is-fixingheader & {
+      z-index: -1;
+      opacity: 0;
+    }
+
+  }
+
+}

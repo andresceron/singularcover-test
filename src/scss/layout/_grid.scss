@@ -1,0 +1,38 @@
+//
+// Grid & layouts
+// ----------------------------------------------------------------------------
+
+html {
+  height: 100%;
+}
+
+body {
+  //Home hero is position: absolute so the body needs to have a padding-top
+  //to prevent the content from hiding under the hero.
+  .sc-root {
+    height: 100%;
+    min-height: 100vh;
+    position: relative;
+  
+    height: calc(100% - #{$header-height-mobile});    
+    min-height: calc(100vh - #{$header-height-mobile});
+    display: flex;
+    flex-direction: column;
+  
+    @include breakpoint(lg) {
+      // padding-top: $header-height-desktop;
+      height: calc(100% - #{$header-height-desktop});    
+      min-height: calc(100vh - #{$header-height-desktop});      
+    }
+    
+  }
+
+}
+
+// Global layout
+// ----------------------------------------------------------------------------
+.container-fluid {
+  max-width: $container-fluid;
+  padding-left: $padding-box;
+  padding-right: $padding-box;
+}

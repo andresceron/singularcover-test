@@ -1,0 +1,118 @@
+// Badge
+// ----------------------------------------------------------------------------
+.badge {
+
+  height: 154px;
+  width: 154px;
+  margin: 0 auto;
+  position: relative;
+  border-radius: 50%;
+  border: 7px solid white;
+  box-shadow: 1px 2px 4px 3px rgba(0,0,0,0.25);
+  background-image: radial-gradient(ellipse at center, transparent 63px, white 64px, white 69px, setColor(primary,base) 70px),
+                    linear-gradient(to top, setColor(primary,base), setColor(red,base));
+
+  &-flipper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+
+    .back {
+
+      .icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -36px;
+        margin-left: -40px;
+        color: white;
+        font-size: 80px;
+      }
+
+      .badge--sm .icon {
+        font-size: 35px;
+        margin: 0;
+        transform: translate(-50%,-50%);
+      }
+
+    }
+
+  }
+
+  &__num {
+
+    color: white;
+    font-family: $alt-font;
+    font-weight: bold;
+    text-align: center;
+    width: 110px;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+
+    &--amount{
+      font-size: 43px;
+    }
+
+    &--currency {
+      font-size: 25px;
+    }
+  
+  }
+
+  &__foot {
+    @include clearfix;
+    text-align: center;
+
+    .icon {
+      color: setColor(blue,base);
+      font-size: 18px;
+      display: block;
+      margin: 0 auto 20px auto;
+    }
+
+    &__amount {
+      color: setColor(red,dark);
+      font-family: $alt-font;
+      font-weight: bold;
+      font-size: 41px;
+      display: inline-block;
+      vertical-align: baseline;
+
+      small {
+        font-size: 0.6em;
+      }
+    }
+    &__text {
+      color: #000;
+      font-family: $alt-font;
+      display: inline-block;
+      max-width: 100px;
+    }
+  }
+
+  &--sm {
+
+    height: 70px;
+    width: 70px;
+    padding: 0;
+    border-width: 3px;
+    background-image: radial-gradient(ellipse at center, transparent 28px, white 29px, white 31px, #bd0000 32px), 
+                      linear-gradient(to top, #bd0000, #e62300);
+
+    .badge__num {
+      font-size: 3px;
+      &--amount {
+        font-size: 25px;
+      }
+      &--currency {
+        font-size: 12px;
+      }
+    }
+
+  }
+
+}

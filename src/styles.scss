@@ -1,0 +1,142 @@
+/* You can add global styles to this file, and also import other style files */
+// @import '../node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
+
+//
+// VARIABLES, MIXINS and INCLUDES
+// ----------------------------------------------------------------------------
+@import 'scss/utils/functions';
+@import 'scss/utils/define';
+@import 'scss/utils/variables';
+@import 'scss/utils/mixin';
+@import 'scss/utils/utilities';
+@import 'scss/bootstrap-imports';
+
+// GLOBAL ELEMENTS
+// ----------------------------------------------------------------------------
+@import 'scss/global/base';
+@import 'scss/global/animations';
+@import 'scss/global/icons';
+@import 'scss/global/forms';
+@import 'scss/global/uforms';
+// @import 'scss/global/fx';
+// @import 'scss/global/hr';
+// @import 'scss/global/labels';
+// @import 'scss/global/links';
+// @import 'scss/global/lists';
+// @import 'scss/global/prices';
+
+// LAYOUT
+// ----------------------------------------------------------------------------
+@import 'scss/layout/grid';
+@import 'scss/layout/sections';
+@import 'scss/layout/sections-colored';
+@import 'scss/layout/sections-image';
+// @import 'scss/layout/header';
+// @import 'scss/layout/nav';
+// @import 'scss/layout/prefooter';
+// @import 'scss/layout/footer';
+// @import 'scss/layout/footer-nav';
+// @import 'scss/layout/scroller';
+@import 'scss/layout/panels';
+// @import 'scss/layout/main-nav';
+@import 'scss/layout/tab-nav';
+
+// 
+// PARTIALS
+// ----------------------------------------------------------------------------
+@import 'scss/partials/buttons';
+@import 'scss/partials/sign-buttons';
+// // @import 'scss/partials/benefits-section';
+// @import 'scss/partials/benefits-list';
+// @import 'scss/partials/benefits-grid';
+@import 'scss/partials/banners'; //must go after benefits
+// @import 'scss/partials/badges'; //must go after benefits
+// @import 'scss/partials/divider-cta';
+@import 'scss/partials/media-objects';
+
+// COMPONENTS
+// ----------------------------------------------------------------------------
+@import 'scss/components/alerts';
+// @import 'scss/components/autosave';
+// @import 'scss/components/avatar';
+// @import 'scss/components/breadcrumb';
+// @import 'scss/components/carousel';
+// @import 'scss/components/chart-bars';
+// @import 'scss/components/chart-pies';
+// @import 'scss/components/checkout-steps';
+// @import 'scss/components/cookies';
+// @import 'scss/components/collapse';
+// @import 'scss/components/comment-box';
+// @import 'scss/components/comment-answer';
+// @import 'scss/components/discount';
+// @import 'scss/components/dropdown';
+// @import 'scss/components/faqs';
+// @import 'scss/components/fg';
+// @import 'scss/components/graph-bar';
+// @import 'scss/components/gcards';
+// @import 'scss/components/hero';
+// @import 'scss/components/hotel';
+// @import 'scss/components/how-works';
+// @import 'scss/components/iframe';
+// @import 'scss/components/impact-module';
+// @import 'scss/components/input-buttons';
+// @import 'scss/components/jump-top';
+// @import 'scss/components/loaders';
+// @import 'scss/components/logos';
+// @import 'scss/components/main-menu';
+
+// @import 'scss/components/member-level-perks';
+// @import 'scss/components/modal';
+// @import 'scss/components/multicol-text';
+// @import 'scss/components/lightbox'; //must go after modal
+// @import 'scss/components/pagination';
+// @import 'scss/components/perks-columns';
+// @import 'scss/components/results';
+// @import 'scss/components/sidenav';
+// @import 'scss/components/spinners';
+// @import 'scss/components/stars';
+// @import 'scss/components/tips';
+// @import 'scss/components/tag-cloud';
+// @import 'scss/components/like';
+// @import 'scss/components/pagination';
+// @import 'scss/components/promo';
+// @import 'scss/components/recommend';
+// @import 'scss/components/rewards';
+// @import 'scss/components/reward-cta';
+// @import 'scss/components/rewards-table';
+// @import 'scss/components/search-shortcuts';
+// @import 'scss/components/sidebar-widget';
+// @import 'scss/components/slider-top';
+// @import 'scss/components/static-section';
+// @import 'scss/components/subscription-form';
+// @import 'scss/components/tags';
+//  // @import 'scss/components/testimonials';
+// @import 'scss/components/tooltips';
+// @import 'scss/components/top-cities';
+// @import 'scss/components/top-countries';
+// @import 'scss/components/top-hotels'; // m-card
+// @import 'scss/components/top-opinions';
+// @import 'scss/components/top-poi';
+// @import 'scss/components/tpv';
+// @import 'scss/components/user-menu';
+// @import 'scss/components/user-comment';
+// @import 'scss/components/user-widget';
+// @import 'scss/components/support';
+// // @import 'scss/components/captation';
+// @import 'scss/components/new-userpass';
+// @import 'scss/components/feature';
+// @import 'scss/components/hotel-rating';
+// @import 'scss/components/card-saved';
+// @import 'scss/components/select';
+// @import 'scss/components/sponsors';
+
+// Forms & input controls
+// ----------------------------------------------------------------------------
+@import 'scss/components/checkboxes';
+// @import 'scss/components/radiobuttons';
+
+// Filter & Order bars
+// ----------------------------------------------------------------------------
+// @import 'scss/components/filter-bar';
+// @import 'scss/components/filter-by';
+// @import 'scss/components/order-bar';

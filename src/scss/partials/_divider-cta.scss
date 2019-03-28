@@ -1,0 +1,49 @@
+//
+// Call to action that serves as divider btw sections
+// ----------------------------------------------------------------------------
+.divider-cta {
+
+  margin-top: 30px;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 40px;
+  text-align: center;
+
+  b,
+  strong {
+    font-weight: 500;
+  }
+
+  &__title,
+  .btn {
+    @include breakpoint(sm) {
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+
+  .btn {
+
+    @include breakpoint(sm) {
+      margin-left: 20px;
+    }
+  }
+
+  &__title {
+    @include title(module);
+font-weight: 400;
+    margin-bottom: 15px;
+    margin-top: 0;
+
+    @include breakpoint(md) {
+      margin-bottom: 0;
+      max-width: 80%;
+      text-align: left;
+    }
+  }
+  &--tight {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+}

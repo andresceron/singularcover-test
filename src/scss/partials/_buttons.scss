@@ -1,0 +1,573 @@
+//
+// Buttons
+// ----------------------------------------------------------------------------
+
+.btn {
+
+  display: inline-block;
+  border-radius: $border-radius;
+  -webkit-border-radius: $border-radius;
+  border: 1px solid transparent;
+  padding: $btn-padding;
+  font-family: $alt-font;
+  font-weight: bold;
+  font-size: $btn-font-size;
+  line-height: 1.454545;
+  text-transform: uppercase;
+  text-align: center;
+  appearance: none;
+  transition: all .2s linear;
+  cursor: pointer;  
+  position: relative;
+  overflow: hidden;
+  vertical-align: bottom;
+  max-width: 100%;
+  letter-spacing: 1px;
+
+  &:hover,
+  &:active,
+  &:focus {
+    text-decoration: none; 
+  }
+  
+  &--block {
+    display: block;
+    width: 100%;
+  }
+
+  // Button sizes
+  // --------------------------------------------------------------------------
+  &--sm {
+    font-size: 11px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 12px;
+    padding-right: 12px;
+
+    .icon {
+      font-size: 16px;
+    }
+  }
+
+  &--lg {
+    padding-top: 14px;
+    padding-bottom: 14px;
+    font-size: 15px;
+    line-height: 1.333333333;
+  }
+  
+  &--full { // for full width in container
+
+    width: 100%;
+    max-width: 414px; //prevent extrabig buttons on small tablets
+    display: block;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    
+    &-nolimit {
+      max-width: none;
+    }
+
+    &-footer {
+      width: 100%;
+      max-width: 290px; //prevent extrabig buttons on small tablets
+      @include breakpoint(xs) {
+        margin: 0 auto;
+        display: block;
+      }
+      @media (max-width: 576px) {
+        max-width: none;
+      } 
+    }
+    
+    &.btn--col {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+  }
+
+  &--adjust {
+    width: auto;
+    display: inline-block;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    margin: 0 auto;
+  }
+
+  &--mobilecenter {
+    @include breakpoint(0, $screen-xs-max) {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  // Main button (brand background)
+  // --------------------------------------------------------------------------
+  &--brand {
+    @include ghost-button(setColor(blue, base), setColor(blue, base), setColor(blue, base), setColor(blue, base), setColor(white, base));
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+  }
+
+  // Alt button (alt background)
+  // --------------------------------------------------------------------------
+  &--alt {
+    @include ghost-button(setColor(white, base), setColor(white, base), setColor(white, base), setColor(white, base), setColor(gray, darkest));
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+  }
+
+  // Dark button (dark background)
+  // --------------------------------------------------------------------------
+  &--dark {
+    @include solid-button(white, setColor(blue, base), white, setColor(blue, base), white, setColor(blue ,base));
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+  }
+
+  // Gray button (e.g cancel buttons)
+  // --------------------------------------------------------------------------
+  &--gray {
+    @include ghost-button(setColor(gray, dark), setColor(gray, dark), setColor(gray, dark), setColor(gray, dark), setColor(white, base));
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+  }
+
+  // Gray button (e.g cancel buttons)
+  // --------------------------------------------------------------------------
+  &--danger {
+    @include ghost-button(setColor(red, dark), setColor(red, dark), setColor(red, dark), setColor(red, dark), setColor(white, base));
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+  }
+
+  // Buttons with icon
+  // --------------------------------------------------------------------------
+
+  &--has-icon {
+    .icon,
+    span {
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .icon {
+      font-size: 1.5em;
+    }
+    span {
+      margin-left: $margin-icon-text;
+    }
+  }
+
+  // Ghost buttons
+  // --------------------------------------------------------------------------
+
+  //mixin params: border-color, color, background-color active, background-color hover (=border)
+
+  &--ghost {
+    @include ghost-button($background-hover: setColor(gray,dark));
+
+    &--brand {
+      @include ghost-button(setColor(red, dark), setColor(red, dark), setColor(red, dark));
+
+      &-subtle {
+        @include ghost-button(setColor(gray,light), setColor(red,base), setColor(primary,base), setColor(red,base));
+      }
+    }
+    &--alt {
+      @include ghost-button($btn-alt-bg, $btn-alt-bg, $btn-alt-hover);
+    }
+    &--white {
+      color: #FFF;
+      background-color: transparent;
+      border: 1px solid #FFF;
+
+      &:hover {
+        background-color: transparentize(#FFF, 0.4);
+        border-color: transparentize(#FFF, 0.4);
+      }
+      &:active {
+        background-color: transparentize(#FFF, 0.7);
+        border-color: transparentize(#FFF, 0.7);
+      }
+    }
+  }
+
+  // With animated right arrow
+  // --------------------------------------------------------------------------
+  &--arrow {
+    position: relative;
+    transition: all $animation-move, padding-right $animation-move;
+    
+    .icon {
+      position: absolute;
+      top: 50%;
+      right: 12px;
+      margin-top: -6px;
+      font-size: 12px;
+      opacity: 0;
+      transition: opacity $animation-move;
+      transform: translateZ(0);
+    }
+
+    &:hover {
+      padding-right: 32px;
+      .icon { opacity: 1; }
+    }
+
+  }
+
+
+  // Icon buttons
+  // --------------------------------------------------------------------------
+
+    &--icon {
+      border-color: setColor(gray,light);
+      border-radius: $border-radius;
+      color: setColor(gray,light);
+
+      &:hover {
+        border-color: setColor(blue,light);
+      }
+    }
+
+    &-uform {
+      position: absolute;
+      top: 45%;
+      right: 0;
+      border: 0;
+      padding: 0;
+      background: none;
+      transform: translateY(-50%);
+      z-index: 10;
+      .icon {
+        width: 20px;
+        height: 20px;
+        fill: setColor(gray,dark);
+      }
+    }
+
+  // Loading buttons
+  // --------------------------------------------------------------------------
+
+    &--loading {
+      transition: all $animation-move;
+         
+      > span:first-child {
+        position: relative;
+        transition: all $animation-move;
+        transform: translateZ(0);
+
+        &::after {
+          @include icon-loader;
+          content:"";
+          position: absolute !important;
+          top: calc(50% - 8px); //to align it with the span
+          right: -22px;
+          font-size: 12px;
+          opacity: 0;
+          transition: opacity $animation-move;
+          transform: translateZ(0);
+          width: 16px;
+          height: 16px;
+          border-radius: 50%;
+        }
+      }
+
+      &.on {
+        padding-right: 35px;
+
+        > span:first-child {
+          opacity: 0.7;
+
+          // color: rgba(#FFF, 0.3); 
+          margin-left: -5px; 
+
+          &::after { 
+           opacity: 1; 
+          }
+        }
+      }
+    }
+
+  // Merchant card button
+  // --------------------------------------------------------------------------
+  &--mcard {
+
+    @include ghost-button($mcard-button-color, $mcard-button-color, $mcard-button-active, $mcard-button-hover);
+    padding: 8px 16px;
+    font-size: 12px;
+    line-height: 1.333333333;
+    height: 50px; //fix IE10-11: without a set height, flex does not vertically center text
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    &-alt {
+      @include solid-button($btn-alt-color,$btn-alt-bg,$btn-alt-color,$btn-alt-hover,$btn-alt-color,$btn-alt-active);
+      border-color: transparent;
+    }
+  
+    > span {
+      
+      display: block;
+
+      + span {
+        font-family: $main-font;
+        font-weight: normal;
+        text-transform: none;
+      }
+
+    }
+
+    @include breakpoint(xs){
+      &--xs-show {
+        display: flex;
+      }
+    }
+
+    &.btn--loading {
+      
+      padding: 8px 16px;
+      position: relative;
+      pointer-events: none;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -12px;
+        margin-top: -12px;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        border-top: 4px solid rgba($mcard-button-color, 0.3);
+        border-right: 4px solid rgba($mcard-button-color, 0.3);
+        border-bottom: 4px solid rgba($mcard-button-color, 0.3);
+        border-left: 4px solid $mcard-button-color;
+        opacity: 0;
+        transition: opacity $animation-fade;
+        transform: translateZ(0);
+        animation: spin 1.2s infinite linear;
+      }
+
+      > span {
+        color: inherit;
+        transform: scale3d(1,1,1);
+        transition: color $animation-fade, transform $animation-move--slow;
+      }
+
+      > span:first-child::after {
+        content: none;       
+      }
+
+      &.btn--mcard-alt::after {
+        border-color: rgba(white, 0.3) rgba(white, 0.3) rgba(white, 0.3) white;
+      }
+
+      &.btn--disabled::after {
+        border-color: rgba(setColor(gray,dark), 0.3) rgba(setColor(gray,dark), 0.3) rgba(setColor(gray,dark), 0.3) setColor(gray,dark);
+      }
+
+      &.on {
+
+        &::after {
+          opacity: 1;
+        }
+
+        > span {
+          color: transparent;
+          transform: scale3d(0.3, 0.3, 0.3);
+        }
+
+      }
+
+    }
+
+  }
+
+
+  // With two lines of text
+  // --------------------------------------------------------------------------
+  &--double {
+
+    padding-top: 8px;
+    padding-bottom: 8px;
+
+    span {
+
+      display: block;
+      font-size: 13px;
+      line-height: 30px;
+    }
+
+  }
+
+  // Helpful button
+  // --------------------------------------------------------------------------
+  &--helpful {
+
+    &:hover,
+    &:focus,
+    &:active {
+      .btn--helpful__count {
+        color: setColor(blue,base);
+      }
+    }
+    .icon {
+      margin-right: $margin-icon-text;
+    }
+    span {
+      text-transform: none;
+      vertical-align: middle;
+    }
+
+    &__count {
+      background-color: #FFF;
+      border: 1px solid setColor(blue,base);
+      border-radius: 2px;
+      display: inline-block;
+      margin-left: 4px;
+      margin-right: 4px;
+      padding: 2px 5px;
+      position: relative;
+      vertical-align: middle;
+
+      &::before,
+      &::after {
+        right: 100%;
+        top: 50%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+      }
+
+      &::before {
+        border-color: rgba(0, 206, 192, 0);
+        border-right-color: setColor(blue,base);
+        border-width: 5px;
+        margin-top: -6px;
+      }
+      &::after {
+        border-color: rgba(255, 255, 255, 0);
+        border-right-color: #FFF;
+        border-width: 4px;
+        margin-top: -5px;
+      }
+    }
+
+  }
+
+  // Disabled look
+  // --------------------------------------------------------------------------
+  &--disabled {
+    @include ghost-button($color: setColor(gray,light), $background-hover: setColor(gray,transparent));
+    border-radius: 30px;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: setColor(gray,light);
+      cursor: not-allowed;
+    }
+  }
+
+  // Inline help buttons (buttons that toggle tooltips)
+  // --------------------------------------------------------------------------
+  &--inlinehelp {
+
+    background-color: transparent;
+    padding: 2px;
+    font-size: 16px;
+    color: setColor(gray,darker);
+  
+    .icon {
+      display: inline-block;
+    }
+
+  }
+
+  &--separate {
+    &--top {margin-top:25px;}
+    &--bottom {margin-bottom:25px;}
+  }
+
+  &--compress {
+    margin: 0;
+  }
+
+
+  //RULES FOR STATE CHANGES IN BUTTONS CHECKOUT ON ANGULAR
+  &.ng-leave {
+    display: none !important;
+  }
+
+  &--outlineradius {
+    color: setColor(white, base);
+    padding: 20px 25px;
+    background-color: transparent;
+    font-family: $alt-font;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 1.428571429;
+    text-transform: uppercase;
+    border-radius: 30px;
+
+    &:hover,
+    &:focus,
+    &:active,
+    &:focus:hover {
+      background-color: setColor(gray, lighter);
+      border-color: setColor(gray, lighter);
+      color: setColor(blue, base);
+      text-decoration: none;
+    }
+
+    &.blue {
+        background-color: transparent;
+        border: 1px solid setColor(blue, base);
+        color: setColor(blue, base);
+
+        &:hover,
+        &:active,
+        &:focus {
+          color: setColor(white, base);
+          background-color: setColor(blue, dark);
+          border-color: setColor(blue, dark);
+        }
+        
+      // color: setColor(blue, base);
+      // border-color: setColor(blue, base);
+    }
+  }
+
+  &.width--50 {
+    width: 50%
+  }
+  &.width--60 {
+    width: 60%
+  }
+  &.width--70 {
+    width: 70%
+  }
+  &.width--80 {
+    width: 80%
+  }
+  &.width--90 {
+    width: 90%
+  }
+  &.radius {
+    border-radius: 30px;
+  }
+
+
+}

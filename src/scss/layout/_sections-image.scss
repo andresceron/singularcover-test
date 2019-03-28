@@ -1,0 +1,212 @@
+//
+// Sections with big background images: images are on the HTML
+// ----------------------------------------------------------------------------
+.section--image {
+  padding: 0;
+  position: relative;
+  min-height: 350px;
+  overflow: hidden;
+  text-align: center;
+
+  .container-fluid {
+    padding: 30px 15px 0;
+
+    @include breakpoint(sm) {
+      padding: 75px 0;
+    }
+  }
+
+  .title_headline,
+  p {
+    @include breakpoint(sm) {
+      color: setColor(white,base);
+    }
+  }
+
+  p {
+    max-width: 600px;
+    margin: 25px auto;
+  }
+  
+  &-bg {
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.0));
+    }
+
+    img {
+      position: static;
+      transform: none;
+      width: 100%;
+    }
+    
+    @include breakpoint(sm) {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      z-index: -1;
+      
+      img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+      }
+    }
+  }
+
+  &-gutter {
+    margin: 0;
+  }
+}
+
+//
+// Sections with big background images: images are set as background
+// -------------------------------------------------------------------------------------
+.section-bkgimage {
+  padding: 0;
+  position: relative;
+  min-height: 385px;
+  overflow: hidden;
+  text-align: center;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.0));
+  }
+
+  .container-fluid {
+    padding: $padding-box-double $padding-box 0;
+  }
+
+  .title_headline,
+  p {
+    color: setColor(white,base);
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include breakpoint(sm) {
+      max-width: 60%;
+    }
+  }
+
+  // Shorter sections
+  &--thin {
+    min-height: 300px;
+  }
+
+  &--about {
+    background-image: url(#{$assetPath}/about_us_sectionimg.jpg);
+
+    .title_headline {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+    }
+  }
+}
+
+//
+// Sections with icon-hotel background image (bigsize): images are set as background
+// -------------------------------------------------------------------------------------
+.section--bkghotel {
+  background-image: url(#{$assetPath}/discover/wanupselect-hotel.svg);
+  background-position-x: right;
+  background-repeat: no-repeat;
+  background-position-y: center;
+  @include breakpoint(xs) {
+    background-position-x: center;
+  }
+}
+
+// 
+// Section with background image wanup banner
+// -------------------------------------------------------------------------------------
+.image--discover {
+
+  @include breakpoint(0, $screen-xs-max) {
+    margin-bottom: 80px;
+  }
+
+  .container-fluid {
+    position: relative;
+    padding: 70px 30px;
+  }
+  .left {
+    width: 100%;
+    text-align: left;
+    
+    p {
+      margin: 0 0 35px;
+    }
+    
+    @include breakpoint(sm) { 
+      float: left;
+      width: 35%;
+    }
+  }
+  .right {
+    width: 100%;
+    padding-top: 80px;
+    text-align: center;
+    
+    .header__logo {
+      width: 100%;
+    }
+    
+    @include breakpoint(sm) { 
+      float: right;
+      width: 35%;
+      text-align: right;
+    }
+
+    @include breakpoint(md) {
+      padding-top: 40px;
+    }
+  }
+
+  .section--image-bg {
+    background-image: url(#{$assetPath}/discover/banner_image-mobile.png); 
+    background-position: center 15%;
+    background-size: cover;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    
+    @include breakpoint(sm) {
+      background-image: url(#{$assetPath}/discover/banner_image.png); 
+    }
+  }
+
+  .title_headline {
+    @include title(section, $color: setColor(white, base));
+  }
+
+  .title_subtle_reg {
+    @include title(subtle_reg, $color: setColor(white, base), $c-font: $alt-font);
+    font-weight: 400;
+    margin: 0;
+  }
+
+}

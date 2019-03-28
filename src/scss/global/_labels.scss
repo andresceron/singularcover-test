@@ -1,0 +1,53 @@
+//
+// Labels
+// --------------------------------------------------------
+.label {
+
+  @include text(small, setColor(white, base));
+  font-weight: bold;
+  display: inline-block;
+  border-radius: 3px;
+  padding: 3px 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  &-wanup {
+
+    //TODO: hacer un each para este listado
+    &--great {
+      background-color: setColor(member-level, great);
+      text-transform: capitalize;
+    }
+    &--star {
+      background-color: setColor(member-level, star);
+      text-transform: capitalize;
+    }
+    &--circle {
+      background-color: setColor(member-level, circle);
+      text-transform: capitalize;
+    }
+    &--top {
+      background-color: setColor(member-level, top);
+      text-transform: capitalize;
+    }
+
+  }
+
+  &-free {
+    background-color: setColor(green, dark);
+    text-transform: uppercase;
+  }
+
+  //Bootstrap default labels
+  &-default,
+  &-primary,
+  &-success,
+  &-info,
+  &-warning,
+  &-danger {
+    color: #fff;
+    text-transform: uppercase;
+  }
+
+}

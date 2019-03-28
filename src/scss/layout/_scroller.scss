@@ -1,0 +1,18 @@
+//
+// Scroller (Enable horizontal scroll in mobile version of
+// "top-whatever" content sections)
+// ----------------------------------------------------------------------------
+.scroller {
+
+  @include breakpoint(0, $screen-sm-max) {
+    margin-left: -20px;
+    margin-right: -20px;
+    font-size: 0;
+    white-space: nowrap;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    transform: translate3d(0,0,0);    
+    -webkit-overflow-scrolling: touch;
+  }
+
+}

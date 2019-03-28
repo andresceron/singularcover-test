@@ -1,0 +1,44 @@
+//
+// Top Hotels
+// ---------------------------------------------------------------------------- 
+.top-hotels {
+
+  // Slider on mobile
+  // --------------------------------------------------------------------------
+  &.slider-top {
+
+    .results {
+      padding-bottom: 15px;
+      padding-top: 1px;
+    }
+
+    @include breakpoint(0, $screen-sm-max) {
+      .results {
+        flex-wrap: nowrap; //allow only one row for slider
+
+        &__item {
+          margin-top: 0;
+          width: 33%;
+          flex: 1 0 auto; //don't shrink to fit
+        }
+      }
+    }
+
+    @include breakpoint(0, $screen-xs-max) {
+      .results {
+
+        &__item {
+          width: 80%;
+          max-width: 400px;
+        }
+      }
+
+    }
+
+  }
+
+  //Avoid text from overflowing the mcard box
+  .mcard-info__hotel-name {
+    white-space: normal;
+  }
+}

@@ -1,0 +1,96 @@
+.card {
+  margin: 15px 0px;
+}
+
+
+.mcard {
+  overflow: auto;
+  height: 100px;
+  align-items: center;
+
+  &__col {
+
+    &--image {
+      width: 100px;
+      height: 80px;
+      align-items: center;
+
+      img {
+        max-width: 70px;
+        max-height: 80px;
+      }
+    }
+    &--info {
+
+
+    }
+    &--actions {
+
+    }
+  }
+}
+
+.thumbnail-wrap {
+  width: 100px;
+
+  display: inline-block ;
+
+  img {
+    height: 65px;
+    margin: 18px 14px
+  }
+}
+
+.info-wrap {
+  vertical-align: top;
+  display: inline-block
+}
+
+@-webkit-keyframes pulse {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    -webkit-transform: scale3d(1.02, 1.02, 1.02);
+    transform: scale3d(1.02, 1.02, 1.02);
+  }
+
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes pulse {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    -webkit-transform: scale3d(1.02, 1.02, 1.02);
+    transform: scale3d(1.02, 1.02, 1.02);
+  }
+
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+
+.pulse {
+  -webkit-animation-name: pulse;
+  animation-name: pulse;
+  -webkit-animation-timing-function: ease-out;
+  animation-timing-function: ease-out
+}
+
+.animated {
+  -webkit-animation-duration: .2s;
+  animation-duration: .2s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both
+}

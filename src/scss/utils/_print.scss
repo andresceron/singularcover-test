@@ -1,0 +1,331 @@
+@media print {
+
+	//
+	// General styles
+	// ----------------------------------------------------------------------------
+
+	* {
+		font-size: 98% !important;
+	}
+
+	body {
+		background-color: #FFF;
+		padding: 0;
+	}
+	.header,
+	.search-bar,
+	.search,
+	.main-nav,
+	.tab-nav,
+	.order-bar,
+	.results__mobile-actions--sort,
+	.hotel-section,
+	.cookies,
+	.footer {
+		display: none;
+	}
+	.section {
+		padding-top: 10px;
+	}
+	.header__wrapper {
+		max-width: 1110px;
+	}
+	.col-print-1 {width:8%;  float:left;}
+	.col-print-2 {width:16%; float:left;}
+	.col-print-3 {width:25%; float:left;}
+	.col-print-4 {width:33%; float:left;}
+	.col-print-5 {width:42%; float:left;}
+	.col-print-6 {width:50%; float:left;}
+	.col-print-7 {width:58%; float:left;}
+	.col-print-8 {width:66%; float:left;}
+	.col-print-9 {width:75%; float:left;}
+	.col-print-10{width:83%; float:left;}
+	.col-print-11{width:92%; float:left;}
+	.col-print-12{width:100%; float:left;}
+	*[class*='col-print'] {
+	    position: relative;
+	    min-height: 1px;
+	    padding-left: 10px;
+		padding-right: 10px;
+		right: 0;
+		left: 0;
+	}
+	.fg,
+	.fg__label,
+	.fg__field,
+	.book-confirm__guest {
+        orphans: 2;
+        widows: 2;
+	}
+
+	.hero {
+		background-color: transparent;
+		height: auto;
+		padding: 0;
+		&:before {
+			content: none;
+		}
+	}
+
+	.hero__nav,
+	.hero__bg,
+	.hotel-hero__rating,
+	.hotel-hero__gallery-link {
+		display: none;
+	}
+
+	.hotel-hero__header {
+		position: relative;
+		color: $gray-base;
+	}
+	
+	.hero__content {
+		height: auto;
+		&.container-fluid{
+			margin: 0 auto;
+			padding: 0;
+		}
+	}
+
+	.corporate__hero.book-confirm {
+		top: inherit;
+		transform: none;
+		position: static;
+		.book-confirm__title,
+		.book-confirm__subtitle {
+			color: setColor(gray,darker);
+		}
+	}
+
+	.book-summary {
+		position: static;
+		bottom: inherit;
+		left: inherit;
+		right: inherit;
+		width: auto;
+		&__actions {
+			display: none;
+		}
+	}
+
+	//
+	// Checkout
+	// ----------------------------------------------------------------------------
+	.book-checkout {
+		
+		&__sidebar {
+			width: 24%;
+			float: left;
+			margin-right: 1%;
+			.book-checkout__header{
+				display: none;
+			}
+		}
+
+		&__content {
+			width: 74%;
+			float: left;
+			margin-left: 1%;
+
+			.book-checkout__header{
+				
+				display: block;
+				
+				.book-header__title {
+					text-align: left;
+				}
+
+			}
+			
+			.form-block {
+				display: none;
+			}
+
+		}
+		
+		&__actions {
+			display: none;
+		}
+
+		&__form {
+			.book-header__title {
+				display: none;
+			}
+		}
+
+	}
+
+	//
+	// Footer
+	// ----------------------------------------------------------------------------
+	.footer__section {
+		border-top: none;
+		width: 100%;
+	}
+	.footer-nav {
+		display: none;
+	}
+	.footer-nav__section {
+		float: left;
+		width: 100%;
+
+		&:not(:first-child) {
+			display: none;
+		}
+	}
+	.footer-nav__wrap {
+		padding-top: 0;
+	}
+	.footer__links {
+		display: none;
+	}
+
+	//
+	// Banners
+	// ----------------------------------------------------------------------------
+	.banner {
+		padding: 10px;
+
+		.icon {
+			display: none;
+		}
+	}
+
+	//
+	// Book confirmation
+	// ----------------------------------------------------------------------------
+	.has-fixedheader .header {
+		display: block;
+		background: transparent;
+		position: relative;
+		.nav,
+		.user-nav,
+		&__right {
+			display: none;
+		}
+	}
+	.book {
+		&-section--noline {
+			margin: 0;
+		}
+		&-confirm {
+			padding-bottom: 10px;
+			&__header {
+				position: relative;
+				text-align: left;
+				margin-top: 30px;
+			}
+			&__title,
+			&__subtitle {
+				color: setColor(gray,darker);
+			}
+			a {
+				display: none;
+			}
+			&__sidebar {
+				margin-top: 0;
+			}
+			&__price--conditions {
+				width: calc(50% - 15px);
+				display: block;
+				float: left;
+			}
+			.sidebar-widget {
+				border-top: none;
+				padding: 10px 0;
+			}
+		}
+		&-summary {
+			max-width: 1110px;
+			padding: 0;
+			margin: 0;
+			&__container {
+				background-color: setColor(gray,lighter);
+				border: 0;
+				flex-wrap: nowrap;
+				padding: 15px;
+				margin: 0;
+			}
+			
+			&__item {
+				border-right: 1px solid #dedede;
+				border-bottom: none;
+				padding-bottom: 0;
+				padding-top: 0;
+				width: 25%;
+				&:last-child {
+					border-right: 0;
+				}
+			}
+			&--alt {
+				.book-summary__container {
+					background-color: setColor(gray,lighter);
+					border: 0;
+					flex-wrap: nowrap;
+					padding: 15px;
+				}
+				
+				.book-summary__item {
+					border-right: 1px solid #dedede;
+					border-bottom: none;
+					padding-bottom: 0;
+					padding-top: 0;
+					width: 25%;
+					&:last-child {
+						border-right: 0;
+					}
+				}
+			}			
+		}
+		&-price__detail {
+			width: 50%;
+			margin-right: 15px;
+			float: left;
+			margin-top: 0;
+		}
+		&-box-section {
+			border: 0;
+			background-color: transparent;
+			padding: 0;
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+	}
+	
+	//
+	// Book confirmation
+	// ----------------------------------------------------------------------------
+	.alert {
+		display: none;
+	}
+	
+	//
+	// Bug fixing for Firefox printers
+	// ----------------------------------------------------------------------------
+	body { 
+		overflow: visible !important; 
+		overflow-x: visible !important; 
+		overflow-y: visible !important; 
+	}
+	body > .fade-ng-cloak { 
+		height: 100%; 
+		display: block;
+		flex: none;
+		float: none;
+	}
+
+	// main#main { 
+	// 	display: block; 
+	// 	flex: none;
+	// }
+	
+	.l-content,
+	.l-sidebar {
+		float: none;
+	}
+
+	.noprint {
+		display: none !important;
+	}
+
+}

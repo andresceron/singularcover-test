@@ -1,0 +1,141 @@
+// Alerts
+// ----------------------------------------------------------------------------
+
+@mixin alert($type) {
+  background-color: setColor(alerts, #{$type}-bg);
+  color : setColor(gray, darkest);
+  border: none;
+  border-radius: $border-radius;
+  // .alert-msg,
+  .icon {
+    color : setColor(alerts, #{$type}-font);
+    vertical-align: top;
+  }
+}
+
+.alert {
+
+  @include text(link);
+  
+  position: relative;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border: 1px solid setColor(gray,light);
+
+  .icon {
+    position: absolute;
+    top: 18px;
+    left: 20px;
+    width: 15px;
+    height: 15px;
+    
+    ~ .alert-msg {
+      padding-left: 27px;
+    }
+  }
+
+  &-close {
+    /*ResetButtonStyle*/
+    padding: 0;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    appearance: none;
+    outline: 0;
+    /*ResetButtonStyle*/
+    position: absolute;
+    top: 18px;
+    left: auto;
+    width: 15px;
+    height: 15px;
+    right: 20px;
+    .icon {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    ~ .alert-msg {
+      padding-right: 27px;
+    }
+  }
+
+  &-msg {
+    padding-left: 0;
+    display: inline-block;
+    max-width: 100%;
+  }
+
+  &-title {
+    font-weight: 700;
+    & + .alert-text {
+      margin-left: 5px;
+    }
+  }
+
+  &--informe {
+    @include alert(info);
+  }
+  &--success {
+    @include alert(success);
+  }
+  &--warning {
+    @include alert(warning);
+  }
+  &--danger {
+    @include alert(danger);
+  }
+
+  &.spaced {
+    margin-bottom: 15px;
+  }
+
+  &.fixed {
+    display: block;
+    padding: $padding-box;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 299;
+
+    .icon {
+      width: 25px;
+      height: 25px;
+    }
+
+    .alert-msg {
+      padding: 0 50px;
+    }
+
+    &.top {
+      top: $header-height-mobile;
+      bottom: auto;
+
+      @include breakpoint(lg){
+        top: $header-height-desktop;
+        bottom: auto;
+      }
+      @include breakpoint(sm){
+        bottom: auto;
+      }
+    }
+
+  }
+
+  &.animated {
+    max-width: 750px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    animation: appearBottom 1.5s ease-out;
+    &.fixed.top {
+      animation: shake 1s ease-out;
+    }
+  }
+
+}

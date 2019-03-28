@@ -1,0 +1,272 @@
+//
+// Common styles for colored sections
+// ----------------------------------------------------------------------------
+.section {
+  &--colored {
+    background-color: setColor(gray,lighter); //default colored background
+    padding-top: $padding-vertical;
+    padding-bottom: $padding-vertical;
+    &.white {
+      background-color: setColor(white,base);
+    }
+    &.blue {
+      background-color: setColor(blue,base);
+    }
+    &.gray {
+      background-color: setColor(gray,lighter);
+    }
+    &.graylightest {
+      background-color: setColor(gray,lightest);
+    }
+  }
+  &.gutter {
+    padding-bottom: 0;
+    padding-top: 0;
+  }
+}
+
+//
+// We take care of you section
+// ----------------------------------------------------------------------------
+.care-section {
+  
+  p {
+    color: setColor(secondary, base);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__wrapper {
+    background-color: setColor(blue, light);
+    display: flex;
+    flex: 1 0 auto;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__img {
+    display: none;
+
+    @include breakpoint(sm) {
+      display: block;
+      background-image: url(#{$assetPath}/CS-img.jpg);
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      width: 50%;
+      height: 100%;
+
+      //sets the space for the background image but we don't want it visible
+      img {
+        visibility: hidden; 
+        height: 100%;
+        width: auto;
+      }
+    }
+  }
+  &__content {
+    padding: $padding-box-double;
+    text-align: center;
+
+    @include breakpoint(sm) {
+      text-align: left;
+      width: 50%;
+    }
+    
+  }
+  &__title {
+    @include title(section);
+    margin-bottom: $padding-box-double; 
+  }
+
+}
+
+//
+// Resources section
+// ----------------------------------------------------------------------------
+.resources-section {
+  background-color: setColor(green, base);
+  margin-bottom: 0;
+  position: relative;
+  z-index: 1;
+
+  &::before,
+  &::after {
+    content: "";
+    background-color: setColor(green, light);
+    position: absolute;
+    width: 320px;
+  }
+  &::before {
+    left: 0;
+    bottom: 0;
+    clip-path: polygon(37% 24%, 100% 53%, 78% 100%, 0 100%, 0% 38%);
+    height: 300px;
+  }
+  &::after {
+    right: 0;
+    top: 0;
+    clip-path: polygon(15% 0, 100% 0, 100% 86%, 65% 100%, 0 22%);
+    height: 280px;
+    z-index: -1;
+  }
+
+  p {
+    color: setColor(secondary, base);
+  }
+
+  // type transparent
+  &--clean {
+    background-color: transparent;
+    padding-top: 18px;
+    &::before,
+    &::after {
+      content: none;
+    }
+  }
+
+  .resources-list {
+
+    @include breakpoint(sm) {
+      display: flex;
+      flex: 1 0 auto;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    &__item {
+      border: 1px solid setColor(secondary, base);
+      padding: $padding-box-double;
+      position: relative;
+      margin-bottom: $padding-box-double;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 320px;
+      width: 100%;
+      text-align: center;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      @include breakpoint(sm) {
+        margin-right: 50px;
+        margin-bottom: 0;
+        margin-left: 0;
+        width: 33%;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+
+      .btn {
+        position: absolute;
+        bottom: -15px; //half the button's height
+        transform: translateX(-50%);
+        left: 50%;
+      }
+      &-highlight {
+        border-color: setColor(blue,base) !important;
+        border-width: 2px;
+        .symbol {
+          width: 36px;
+          height: 36px;
+          background-color: setColor(blue,base);
+          padding: 5px;
+          border-radius: 50%;
+          overflow: hidden;
+          position: absolute;
+          top: 0;
+          right: 0;
+          margin-top: -18px;
+          margin-right: -18px;
+          .icon {
+            display: block;
+            width: 100%;
+            height: 100%;
+            fill: setColor(white,base);
+            color: setColor(white,base);
+          }
+          @include breakpoint(xs) {
+            right: 50%;
+            transform: translateX(50%);
+            margin-right: 0;
+          }
+        }
+      }
+    }
+    &--gray {
+      @include breakpoint(sm) {
+        justify-content: center;
+      }
+      .resources-list__item {
+        // border-color: setColor(gray, light);
+      }
+      p {
+        &:first-of-type {
+          color: setColor(gray,darker);
+        }
+        color: setColor(gray,dark);
+
+        //TODO maybe make an @each for this
+        &.color-great {
+          color: setColor(member-level,great);
+        }
+        &.color-circle {
+          color: setColor(member-level,circle);
+        }
+        &.color-star {
+          color: setColor(member-level,star);
+        }
+        &.color-top {
+          color: setColor(member-level,top);
+        }
+      }
+    }
+  }
+}
+
+//
+// Intro + CTA section
+// ----------------------------------------------------------------------------
+.introcta-section {
+  background-color: setColor(secondary, base);
+
+  .title_headline {
+    color: setColor(white, base);
+    text-align: left;
+  }
+  .corporate__content {
+    @include text(big, setColor(white, base));
+  }
+  .impact-cta {
+    float: right;
+  }
+}
+
+
+//
+// Testimonials section
+// ----------------------------------------------------------------------------
+.testimonials-section {
+  background-image: url(#{$assetPath}/discover/bg-comment.svg), url(#{$assetPath}/discover/bg-comment.svg);
+  background-repeat: no-repeat;
+  background-position: 500px -150px, -120px 250px;
+  background-color: setColor(red,dark);
+  background-size: 1240px, 560px;
+
+  @include breakpoint(xs){
+    background-image: url(#{$assetPath}/discover/bg-comment.svg);
+    background-repeat: no-repeat;
+    background-position: -40px 130px;
+    background-color: setColor(red,dark);
+    background-size: 430px;
+  }
+  
+  .section__title {
+    color: setColor(white, base);
+  }
+}

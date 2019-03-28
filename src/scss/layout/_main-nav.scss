@@ -1,0 +1,296 @@
+//
+// Main Nav
+// ----------------------------------------------------------------------------
+.main-nav,
+.user-nav {
+
+  pointer-events: none;
+  position: fixed;
+
+  // Layout
+  // --------------------------------------------------------------------------  
+  &__overlay {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    transition: background-color $animation-fade;
+  }
+
+  &__panel {
+    position: absolute;
+    top: 0;
+    z-index: 1;    
+    width: 300px;
+    border-radius: 0;     
+    transition: transform $animation-move, opacity $animation-move;
+  }
+
+  @include breakpoint(0, $screen-sm-max)  {
+  
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1200;
+  
+    &__panel {
+      right: 0;      
+      height: 100%;
+      opacity: 1;
+      transform: translate3d(300px, 0, 0);
+    }
+  
+    .panel__wrap {
+      padding-top: 61px;
+      padding-bottom: 71px;
+    }
+
+    .panel__header {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+    }
+
+    .panel__content {
+      position: absolute;
+      top: 61px;
+      right: 0;
+      bottom: 71px;
+      left: 0;
+      overflow-x: auto;
+    }
+
+    .panel__footer {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      left: 0;
+    }
+
+    &--logged-in {
+      .panel__wrap {
+        padding-bottom: 0;
+        }
+      .panel__content {
+        bottom: 0;
+        }
+    }
+
+  }
+
+  @include breakpoint($screen-md) {
+
+    top: $header-height-desktop;
+    left: 0;
+    width: 100%;
+    z-index: 1099;
+
+    &__wrapper {
+      position: relative;
+    }
+
+    &__overlay {
+      display: none;
+    }
+
+    &__panel {
+      right: 10px;
+      opacity: 0;
+      transform: translate3d(0,-10%,0);
+      box-shadow: 0 8px 8px rgba(0, 0, 0, 0.25);
+    }
+
+    .panel__header {
+      display: none;
+    }
+
+    .panel__wrap {
+      overflow: hidden;
+    }
+
+  }
+
+  // Menu
+  // -------------------------------------------------------------------------- 
+  &__menu {
+
+    margin: 0 -10px; 
+  
+    a {
+      position: relative;
+      display: block;
+      padding: 17px 30px;
+      background-color: transparent;
+      color: setColor(gray,darker);
+      font-family: $alt-font;
+      font-weight: bold;
+      font-size: 12px;
+      line-height: 1.3333333333;
+      text-transform: uppercase;
+      &:hover {
+        //background-color: setColor(gray,lightest);
+        .icon {
+          color: setColor(blue,base);
+        }
+      }
+    }
+
+    .icon {
+      position: absolute;
+      top: 50%;
+      right: 30px;
+      margin-top: -12px;
+      color: $panel-icon-color;
+      font-size: 22px;
+    }
+
+  }
+
+  // Accordion
+  // -------------------------------------------------------------------------- 
+  &__accordion {
+
+    margin: 20px -10px 0;
+    border-top: 1px solid setColor(gray,light);
+
+    .panel-title {
+
+      position: relative;
+      display: block;
+      padding: 17px 30px;
+      background-color: transparent;
+      border-bottom: 1px solid setColor(gray,light);
+      color: setColor(gray,darker);
+      font-family: $alt-font;
+      font-weight: bold;
+      font-size: 12px;
+      line-height: 1.3333333333;
+    
+      .icon {
+        position: absolute;
+        top: 50%;
+        right: 36px;
+        margin-top: -6px;
+        color: $panel-icon-color;
+        font-size: 12px;
+        transform: rotate(90deg);
+        transition: transform $animation-move;
+      }
+
+      &.collapsed .icon {
+        transform: rotate(0deg);
+      }
+
+    }
+
+    .panel-collapse {
+
+      &.in {
+        border-bottom: 1px solid setColor(gray,light);
+      }
+
+    }
+
+    .list-group {
+    
+      margin: 0;
+      padding: 0;
+      list-style: none;
+
+      &-item a {
+
+        display: block;
+        padding: 8px 30px;
+        background-color: transparent;
+        color: setColor(gray,darker);
+        font-size: 12px;
+        line-height: 1.333333333;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      
+        span,
+        .bold {
+          display: inline-block;
+          vertical-align: middle;
+        }
+
+        .bold {
+          width: 30px;
+          margin-right: 10px;
+          text-align: center;
+        }
+
+        &:hover {
+          //background-color: setColor(gray,lighter);
+        }
+      
+      }
+
+    }
+
+
+  }
+
+  // Other Content
+  // -------------------------------------------------------------------------- 
+  .user-menu__cta {
+
+    &,
+    .is-fixingheader &,
+    .has-fixedheader & {
+      display: block;
+      margin: 0;
+    }
+  
+  }
+
+
+}
+
+// Menu ON State
+// ----------------------------------------------------------------------------
+.nav--on,
+.user--on {
+
+  @include breakpoint(0, $screen-sm-max) {
+
+    overflow: hidden;    
+
+    .main-nav {
+      z-index: 1200;
+
+    }
+  }
+  
+}
+
+.nav--on {
+  .main-nav {
+    pointer-events: auto;
+
+    .main-nav__panel {
+      opacity: 1;
+      transform: translate3d(0,0,0);
+    }
+    .main-nav__overlay {
+      background-color: rgba($gray-base,.5);      
+    }
+  }
+}
+.user--on {
+  .user-nav {
+    pointer-events: auto;
+
+    .main-nav__panel {
+      opacity: 1;
+      transform: translate3d(0,0,0);
+    }
+    .main-nav__overlay {
+      background-color: rgba($gray-base,.5);      
+    }
+  }
+}

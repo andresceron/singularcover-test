@@ -1,0 +1,235 @@
+//
+// $VARIABLES
+// ----------------------------------------------------------------------------
+
+// Typography
+// ----------------------------------------------------------------------------
+$main-font: 'Merriweather', serif;
+$alt-font: 'Montserrat', sans-serif;
+$main-font-size: 14;
+$medium-weight: 600;
+
+// Typos and Colors
+// ----------------------------------------------------------------------------
+@import 'define-typos';
+@import 'define-colors';
+
+// Layout & Grid
+// ----------------------------------------------------------------------------
+$container-fluid: 1200px;
+$container-over: 1200px;
+
+$header-height-mobile: 60px;
+$header-height-desktop: 70px;
+// $header-height-lang: 35px;
+
+$hero-height-mobile: 230px;
+$hero-height-tablet: 384px;
+$hero-height-desktop: 720px;
+$hero-height-nothome: 518px;
+$hero-height-full: 100vh; 
+$hero-height-taller: 60vh; 
+
+$searchbar-lg-width: 1080px;
+$searchbar-lg-fixed-width: 800px;
+$searchbar-md-width: 890px;
+$searchbar-md-fixed-width: 600px;
+$searchbar-boxshadow: 0 1px 3px rgba(black,0.14);
+
+
+$cart-height-mobile: 68px;
+
+// Paddings
+// ------------------------
+$padding-box: 15px;
+$padding-box-double: $padding-box*2;
+$padding-vertical: 30px;
+
+// Custom breakpoints
+// ----------------------------------------------------------------------------
+
+// Phablets
+$screen-pblet-min: 600px;
+$screen-pblet-max: 660px;
+
+// Modals
+$modals-bkpoint: 650px;
+
+// Transitions
+// ----------------------------------------------------------------------------
+$animation-fade: .2s linear;
+$animation-fade--slow: .5s linear;
+$animation-move: .2s cubic-bezier(.694, .0482, .335, 1);
+$animation-move--slow: .5s ease-in;
+
+// Member levels
+// ----------------------------------------------------------------------------
+$member-levels: (
+  great  : #00ceC0,
+  circle : #00b8de,
+  star   : #ffa300,
+  top    : #222222
+);
+
+// Checkboxes
+// ----------------------------------------------------------------------------
+$cb-color: setColor(gray,dark);
+$cb-color--hover: setColor(gray,light);
+$cb-color--checked: setColor(blue, base);
+
+$cb-check-color: white;
+$cb-check-bg: white;
+$cb-check-border: setColor(gray,light);
+
+// Buttons & links
+// ----------------------------------------------------------------------------
+
+$btn-font-size: 12px;
+$btn-padding: 9px 22px;
+
+$btn-main-color: white;
+$btn-main-bg: setColor(red, dark);
+$btn-main-hover: setColor(red, darker);
+$btn-main-active:  setColor(red, darker);
+
+$btn-alt-color: white;
+$btn-alt-bg: setColor(blue, base);
+$btn-alt-hover: setColor(blue, dark);
+$btn-alt-active:  setColor(blue, dark);
+
+$link-color: setColor(red, dark);
+$link-hover-color: setColor(red, darker);
+$link-hover-decoration: underline;
+
+// Loaders
+// ----------------------------------------------------------------------------
+$loading-icon-color: #FFF;
+$loading-icon-color-alt: setColor(gray,darker);
+$loading-icon-size: 16px;
+
+// Placeholders
+// ----------------------------------------------------------------------------
+$ph-bkg: setColor(gray,lighter);
+
+// uForm fields config
+// ----------------------------------------------------------------------------
+$field-padding: 10px;
+$field-height: 36px;
+
+$form-group-margin-bottom: 30px;
+
+
+// Header & Nav
+// ----------------------------------------------------------------------------
+$header-bg: setColor(gray,lighter);
+$nav-collapsed-color: setColor(gray,darker);
+
+$header-brand-mobile: setColor(red,dark);
+$header-brand-desktop: white;
+$header-brand-fixed: $header-brand-mobile;
+
+// Search 
+// ----------------------------------------------------------------------------
+$search-title-color: setColor(gray,dark);
+$search-icon-color: setColor(blue,base);
+$search-results-hover: setColor(gray,lighter);
+
+// Filter & sort bars
+// ----------------------------------------------------------------------------
+$filter-border: setColor(gray,light);
+$filter-dropdown-color: setColor(gray,darker);
+$filter-group-color: setColor(gray,dark);
+$filter-group-color--hover: setColor(gray,light);
+$filter-group-color--active: setColor(gray,darker);
+
+$filterby-color: setColor(gray,darker);
+$filterby-bg: setColor(gray,light);
+$filterby-hover: setColor(gray,dark);
+$filterby-hover-color: #FFFFFF;
+
+$orderby-active: setColor(blue,base);
+$orderby-hover: setColor(blue,dark);
+
+// Stars
+// ----------------------------------------------------------------------------
+$stars-color: setColor(gray,light);
+$stars-active: setColor(yellow,star);
+
+// Custom Sliders
+// ----------------------------------------------------------------------------
+$handleActiveColor: #451aff;
+$handleHoverColor: #fff;
+$labelTextColor: $gray-base;
+$handleBgColor: setColor(secondary,base);
+$handleInnerColor: #fff;
+$handleDisabledColor: setColor(gray,light);
+$handleBorderColor: setColor(gray,light);
+$limitLabelTextColor: $labelTextColor;
+$barFillColor: setColor(blue,base);
+$barNormalColor: setColor(gray,light);
+
+$ticksColor: $barNormalColor;
+$selectedTicksColor: $barFillColor;
+$ticksWidth: 10px;
+$ticksHeight: 10px;
+$ticksValuePosition: -30px;
+
+$handleSize: 18px;
+$handlePointerSize: 0;
+$bubblePadding: 10px 0;
+$barDimension: 5px;
+
+// Merchant Card
+// ----------------------------------------------------------------------------
+$mcard-bg: white;
+
+$mcard-score-color: white;
+$mcard-score-bg: setColor(secondary,base);
+
+$mcard-discount-size: 65px;
+$mcard-discount-color: white;
+$mcard-discount-bg: setColor(red,dark);
+$mcard-promo-bg: setColor(yellow,star);
+
+$mcard-text-color: setColor(gray,dark);
+$mcard-bold-color: setColor(gray, darker); 
+$mcard-em-color: setColor(red,dark);
+$mcard-muted-color: setColor(gray,light);
+
+$mcard-button-color: setColor(blue,base);
+$mcard-button-active: setColor(blue,dark);
+$mcard-button-hover: setColor(blue,light);
+
+
+// Icons
+// ----------------------------------------------------------------------------
+//Global
+$margin-icon-text: 4px;
+
+//Local
+$alert-icon-size: 24px;
+$alert-color-success: setColor(blue,base);
+$alert-color-warning: setColor(yellow,star);
+$alert-color-danger: setColor(red,base);
+$panel-icon-color: setColor(gray,dark);
+
+// Spinners
+// ----------------------------------------------------------------------------
+$spinner-total-width: 120px;
+$spinner-total-height: 40px;
+
+// Prices
+// ----------------------------------------------------------------------------
+$price-font: $alt-font;
+$price-size: 17px;
+$price-weight: bold;
+
+// Tooltips
+// ----------------------------------------------------------------------------
+$tooltip-arrow-width: 8px;
+$tooltip-color: setColor(white, base);
+$tooltip-border-color: setColor(gray,light);
+
+//Border
+// ----------------------------------------------------------------------------
+$top-countries-border : 1px;

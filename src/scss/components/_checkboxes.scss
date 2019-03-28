@@ -1,0 +1,113 @@
+//
+// Checkboxes
+// ----------------------------------------------------------------------------
+.cb {
+
+  @include text(small_thin, setColor(gray,dark)); //$cb-color
+  position: relative;
+  display: block;
+  padding-left: 26px;
+  cursor: pointer;
+
+  [type="checkbox"] {
+    display: none;
+  }
+
+  > span {
+    transition: all $animation-fade;    
+  }
+
+  > span::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    background-color: $cb-check-bg;
+    border: 1px solid $cb-check-border;
+    border-radius: $border-radius;
+    transition: all $animation-fade;
+  }
+
+  .icon-check {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    z-index: 1;
+    color: $cb-check-color;
+    font-size: 8px;
+    display: none;
+  }
+
+  &--multiline {
+    small {
+      color: $cb-color;
+      display: block;
+      line-height: 1.3;
+    }
+  }
+
+  // Hover state
+  // ----------------------------------------------------------------------------  
+  &:hover {
+    > span::before {
+      background-color: $cb-color--hover;
+    }
+  }
+
+  // Checked state
+  // ----------------------------------------------------------------------------  
+  [type="checkbox"]:checked {
+
+    ~ .icon-check {
+      display: block;
+    }
+
+    ~ span {
+
+      //color: $cb-color--checked;  
+    
+      &::before {  
+        background-color: $cb-color--checked;
+        border-color: $cb-color--checked;
+      }
+
+      //for adding notes to cb text, they don't change color on checked
+      small {
+        color: $cb-color;
+      }
+
+    }
+
+  }
+
+  // Error state
+  // ----------------------------------------------------------------------------  
+  &.has-error {
+    span {
+      color: setColor(red, dark);
+
+      &::before {
+        border-color: setColor(red, dark);
+      }
+    }
+  }
+
+
+
+  // Ruled Checks with tooltip inline to see mobile and desktop state
+  // ---------------------------------------------------------------------------- 
+  &--inlined {
+
+    display: inline;
+    padding: 0;
+
+    > span {
+      display: inline;
+    }
+
+  }
+
+}

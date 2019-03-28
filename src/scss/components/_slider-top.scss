@@ -1,0 +1,99 @@
+//
+// Slider top (top countries, top hotels, etc)
+// ----------------------------------------------------------------------------
+.slider-top {
+  overflow: hidden;
+  position: relative;
+
+  // Layout
+  // --------------------------------------------------------------------------
+  &__wrap {
+    font-size: 0;
+    position: relative;
+
+    
+    &.scroller {
+      margin: 0;
+    }
+  }
+
+  &__window {
+    overflow: hidden;
+    //max-width: 1180px;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include breakpoint(md){
+      //margin-left: 30px;
+      //margin-right: 30px;
+    }
+  }
+
+  &__page {
+    display: inline; //so it has no effect on mobile versions
+
+    @include breakpoint(md){
+      max-width: 1180px;
+      width: 100%;
+      transition: transform 1s ease-in-out;
+      position: absolute;
+    }
+
+    &--1 {
+      left: 100%;
+    }
+    &--2 {
+      left: 200%;
+    }
+    &--3 {
+      left: 300%;
+    }
+  }
+
+  // Navigation
+  // --------------------------------------------------------------------------
+  &__nav {
+    a {
+      background-color: setColor(red, dark);
+      color: setColor(white, base);
+      display: none;
+      font-size: 20px;
+      padding: 10px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+
+      @include breakpoint(md){
+        display: block;
+      }
+
+      &:hover {
+        color: setColor(gray,darker);
+      }
+
+      &.prev {
+        left: 0;
+      }
+      &.next {
+      right: 0;
+      }
+      &.disabled {
+        background-color: setColor(gray, light);
+        color: setColor(gray, dark);
+        cursor: default;
+        
+        &:hover {
+          background-color: setColor(gray, light);
+          color: setColor(gray, dark);
+          cursor: default;
+        }
+      }
+
+      .icon {
+        display: block;
+      }
+    }
+  }
+
+}
