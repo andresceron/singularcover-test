@@ -2,8 +2,6 @@ import {Component, OnInit, OnDestroy, Input, Output, EventEmitter, ChangeDetecti
 import { FormControl } from '@angular/forms';
 import { startWith, debounceTime } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
 
 @Component({
   selector: 'sc-searchbar',
@@ -32,6 +30,7 @@ export class SearchbarComponent implements OnDestroy, OnInit {
   }
 
   ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
 }

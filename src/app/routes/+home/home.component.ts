@@ -156,6 +156,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   modifyFav(event) {
+    console.log(event);
     const item = this.savedList.findIndex(el => {
       if (el.id === event.item.id) {
         return el;

@@ -45,6 +45,7 @@ export class DataListComponent {
   }
 
   clickedFavItem(listToModify, item, idx) {
+    console.log(idx);
     this.itemEvent.emit({listToModify, item, idx});
   }
 

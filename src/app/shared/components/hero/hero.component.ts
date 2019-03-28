@@ -19,7 +19,6 @@ import { IHeroSettings } from '@interfaces/hero-settings.interface';
 })
 
 export class HeroComponent implements OnDestroy, OnInit {
-  public ST_HOST = AppConstants.ST_HOST;
   public image: string;
   public heroHeightClass: string;
   public calculateHeight: string;
@@ -41,7 +40,7 @@ export class HeroComponent implements OnDestroy, OnInit {
   constructor(private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.image = AppConstants.ST_HOST + '/images/hero/hero.jpg';
+    this.image = '/images/hero/hero.jpg';
     this.heroDisplay = 'block';
 
     this.heroHeightClass = window.innerWidth <= 992 ? 'hero--fullheight' : '';

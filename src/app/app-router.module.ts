@@ -8,10 +8,6 @@ export const routes: Routes = [
     loadChildren: './routes/+home/home.module#HomeModule'
   },
   {
-    path: 'contact',
-    loadChildren: './routes/+contact/contact.module#ContactModule',
-  },
-  {
     path: '**',
     redirectTo: ''
   }
